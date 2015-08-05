@@ -40,7 +40,7 @@
 <meta name="description" content="工作以来的尝试和感想">
 <meta property="og:type" content="website">
 <meta property="og:title" content="标签云">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta property="og:url" content="http://zuorambo.github.io/blog/tags/index.html">
 <meta property="og:site_name" content="Web开发工具箱">
 <meta property="og:description" content="工作以来的尝试和感想">
 <meta property="og:updated_time" content="2015-08-05T03:58:42.060Z">
@@ -195,7 +195,7 @@
           <div class="comments" id="comments">
             
               <div class="ds-thread" data-thread-key="tags/index.html"
-                   data-title="标签云" data-url="http://yoursite.com/tags/index.html">
+                   data-title="标签云" data-url="http://zuorambo.github.io/blog/tags/index.html">
               </div>
             
           </div>
@@ -370,7 +370,9 @@
 
 
 
-  <script type="text/javascript" src="/js/nav-toggle.js"></script>
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
 
@@ -378,6 +380,9 @@
     $(document).ready(function () {
       if (CONFIG.sidebar === 'always') {
         displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
       }
     });
   </script>

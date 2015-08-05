@@ -43,7 +43,7 @@
 等等环境与系统,所以安装node的过程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="test">
-<meta property="og:url" content="http://yoursite.com/2015/08/05/test/index.html">
+<meta property="og:url" content="http://zuorambo.github.io/blog/2015/08/05/test/index.html">
 <meta property="og:site_name" content="Web开发工具箱">
 <meta property="og:description" content="使用Hexo有感简介Hexo是好多人都推荐的基于node的博客系统,可以从md生成静态文件,然后上传到github.io上
 安装说明本人开发环境为windows7 64bit系统,渣本配置虽低却很有内涵,安装了
@@ -276,7 +276,7 @@
           <div class="comments" id="comments">
             
               <div class="ds-thread" data-thread-key="2015/08/05/test/"
-                   data-title="test" data-url="http://yoursite.com/2015/08/05/test/">
+                   data-title="test" data-url="http://zuorambo.github.io/blog/2015/08/05/test/">
               </div>
             
           </div>
@@ -471,7 +471,9 @@
 
 
 
-  <script type="text/javascript" src="/js/nav-toggle.js"></script>
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
   
@@ -638,6 +640,9 @@
     $(document).ready(function () {
       if (CONFIG.sidebar === 'always') {
         displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
       }
     });
   </script>
