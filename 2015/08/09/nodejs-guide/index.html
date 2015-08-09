@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="blog," />
+  <meta name="keywords" content="javascript,nodejs," />
 
 
 
@@ -37,25 +37,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="使用Hexo有感简介Hexo是好多人都推荐的基于node的博客系统,可以从md生成静态文件,然后上传到github.io上
-安装说明本人开发环境为windows7 64bit系统,渣本配置虽低却很有内涵,安装了
-1php+mysql+apache+nginx,go,python 27+3,node,sqlserver,oracle,perl,c,c++,c#
-等等环境与系统,所以安装node的过程">
+<meta name="description" content="这两年最火的nodejs有哪些学习和把玩的呢？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http://rambone.me/2015/08/05/test/index.html">
+<meta property="og:title" content="nodejs初体验">
+<meta property="og:url" content="http://rambone.me/2015/08/09/nodejs-guide/index.html">
 <meta property="og:site_name" content="Web开发工具箱">
-<meta property="og:description" content="使用Hexo有感简介Hexo是好多人都推荐的基于node的博客系统,可以从md生成静态文件,然后上传到github.io上
-安装说明本人开发环境为windows7 64bit系统,渣本配置虽低却很有内涵,安装了
-1php+mysql+apache+nginx,go,python 27+3,node,sqlserver,oracle,perl,c,c++,c#
-等等环境与系统,所以安装node的过程">
-<meta property="og:updated_time" content="2015-08-05T07:14:18.430Z">
+<meta property="og:description" content="这两年最火的nodejs有哪些学习和把玩的呢？">
+<meta property="og:updated_time" content="2015-08-09T16:11:37.761Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
-<meta name="twitter:description" content="使用Hexo有感简介Hexo是好多人都推荐的基于node的博客系统,可以从md生成静态文件,然后上传到github.io上
-安装说明本人开发环境为windows7 64bit系统,渣本配置虽低却很有内涵,安装了
-1php+mysql+apache+nginx,go,python 27+3,node,sqlserver,oracle,perl,c,c++,c#
-等等环境与系统,所以安装node的过程">
+<meta name="twitter:title" content="nodejs初体验">
+<meta name="twitter:description" content="这两年最火的nodejs有哪些学习和把玩的呢？">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -65,7 +56,7 @@
   };
 </script>
 
-  <title> test | Web开发工具箱 </title>
+  <title> nodejs初体验 | Web开发工具箱 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -188,7 +179,7 @@
           
           
             
-              test
+              nodejs初体验
             
           
         </h1>
@@ -197,19 +188,34 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-08-05T10:34:35+08:00" content="2015-08-05">
-            2015-08-05
+          <time itemprop="dateCreated" datetime="2015-08-09T23:29:17+08:00" content="2015-08-09">
+            2015-08-09
           </time>
         </span>
 
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/技术/" itemprop="url" rel="index">
+                  <span itemprop="name">技术</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
         
 
         
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/08/05/test/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/05/test/" itemprop="commentsCount"></span>
+              <a href="/2015/08/09/nodejs-guide/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/09/nodejs-guide/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -223,12 +229,75 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="使用Hexo有感">使用Hexo有感</h1><h2 id="简介">简介</h2><p>Hexo是好多人都推荐的基于node的博客系统,可以从md生成静态文件,然后上传到github.io上</p>
-<h2 id="安装说明">安装说明</h2><p>本人开发环境为windows7 64bit系统,渣本配置虽低却很有内涵,安装了</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php+mysql+apache+nginx,go,python <span class="number">27</span>+<span class="number">3</span>,node,sqlserver,oracle,perl,c,c++,c<span class="preprocessor">#</span></span><br></pre></td></tr></table></figure>
-<p>等等环境与系统,所以安装node的过程就不再赘述,然后顺势使用npm -g安装hexo即可。</p>
-<h2 id="使用过程">使用过程</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#找个目录,初始化脚本与项目</span></span><br><span class="line">hexo init blog</span><br><span class="line"><span class="comment">#安装所需文件与依赖</span></span><br><span class="line"><span class="built_in">cd</span> blog; npm install</span><br><span class="line"><span class="comment">#启动服务&amp;发布新博文</span></span><br><span class="line">hexo server; hexo new post <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-<p>主题则使用<a href="http://theme-next.iissnan.com/" target="_blank" rel="external">next</a></p>
+        <span itemprop="articleBody"><h1 id="nodejs以及iojs近年来备受开发者关注,初学者可以关注哪些优秀开源项目呢？">nodejs以及iojs近年来备受开发者关注,初学者可以关注哪些优秀开源项目呢？</h1><blockquote>
+<p>web开发(取代php)</p>
+<blockquote>
+<p>Express + Mongoose/Mysql + Bootstrap</p>
+</blockquote>
+<p>Rest开发(API设计潮流)</p>
+<blockquote>
+<p>restify</p>
+</blockquote>
+<p>聊天室(这样的轮子最多了)</p>
+<blockquote>
+<p>socket.io</p>
+</blockquote>
+<p>爬虫(和python叫板)</p>
+<blockquote>
+<p>cheerio（让你用熟悉的jquery写法操控爬来的dom）</p>
+</blockquote>
+<p>博客(代替wordpress)</p>
+<blockquote>
+<p>Hexo（也就是本博使用的静态博客生成工具,再配合github pages简直又便宜又裤）</p>
+</blockquote>
+<p>论坛(超越discuss)</p>
+<blockquote>
+<p>nodeclub</p>
+</blockquote>
+<p>PPT(写markdown就可直接演示)</p>
+<blockquote>
+<p>cleaver</p>
+</blockquote>
+<p>包管理(每个语言都有自己的包管理)</p>
+<blockquote>
+<p>bower</p>
+</blockquote>
+<p>Oauth</p>
+<blockquote>
+<p>passport</p>
+</blockquote>
+<p>定时任务(node版crontab)</p>
+<blockquote>
+<p>later</p>
+</blockquote>
+<p>浏览器(一处编写，两处运行)</p>
+<blockquote>
+<p>browserify</p>
+</blockquote>
+<p>命令行(打造自己的command)</p>
+<blockquote>
+<p>commander</p>
+</blockquote>
+<p>web控制台(有浏览器的地方就可登录服务器)</p>
+<blockquote>
+<p>tty.js</p>
+</blockquote>
+<p>客户端应用(谁说js不能写桌面应用)</p>
+<blockquote>
+<p>node-webkit</p>
+</blockquote>
+<p>操作系统(代码顶级)</p>
+<blockquote>
+<p>nodeos</p>
+</blockquote>
+</blockquote>
+<p><strong><em> 除了上面这些,还有一些值得关注 </em></strong></p>
+<ol>
+<li>项目管理&amp;构建工具:grunt gulp</li>
+<li>工具: underscore log4js require moment</li>
+<li>底层: http request</li>
+</ol>
+<p><code>之后咱们会去学习分享上述的优秀项目</code></p>
 </span>
       
     </div>
@@ -237,7 +306,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/blog/" rel="tag">#blog</a>
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
           
         </div>
       
@@ -246,11 +317,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/06/js-skill/" rel="prev">js常见技巧</a>
+              <a href="/2015/08/10/hello-world/" rel="prev">Hello World</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/06/js-skill/" rel="next">js常见技巧</a>
             
           </div>
         </div>
@@ -275,8 +348,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/08/05/test/"
-                   data-title="test" data-url="http://rambone.me/2015/08/05/test/">
+              <div class="ds-thread" data-thread-key="2015/08/09/nodejs-guide/"
+                   data-title="nodejs初体验" data-url="http://rambone.me/2015/08/09/nodejs-guide/">
               </div>
             
           </div>
@@ -380,7 +453,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Hexo有感"><span class="nav-number">1.</span> <span class="nav-text">使用Hexo有感</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装说明"><span class="nav-number">1.2.</span> <span class="nav-text">安装说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用过程"><span class="nav-number">1.3.</span> <span class="nav-text">使用过程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nodejs以及iojs近年来备受开发者关注,初学者可以关注哪些优秀开源项目呢？"><span class="nav-number">1.</span> <span class="nav-text">nodejs以及iojs近年来备受开发者关注,初学者可以关注哪些优秀开源项目呢？</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

@@ -257,6 +257,94 @@
           
           
             
+              <a class="post-title-link" href="/2015/08/09/nodejs-guide/" itemprop="url">
+                nodejs初体验
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-08-09T23:29:17+08:00" content="2015-08-09">
+            2015-08-09
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/技术/" itemprop="url" rel="index">
+                  <span itemprop="name">技术</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/08/09/nodejs-guide/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/09/nodejs-guide/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="description">这两年最火的nodejs有哪些学习和把玩的呢？</span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/09/nodejs-guide/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/08/06/js-skill/" itemprop="url">
                 js常见技巧
               </a>
@@ -273,6 +361,21 @@
           </time>
         </span>
 
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/技术/" itemprop="url" rel="index">
+                  <span itemprop="name">技术</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
         
 
         
@@ -295,8 +398,12 @@
 
       
         
-          <span itemprop="articleBody"><h2 id="javascript_常用技巧积累(不定期更新)">javascript 常用技巧积累(不定期更新)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组拼接,arr2追加到arr1之后</span></span><br><span class="line"><span class="built_in">Array</span>.prototype.push.apply(arr1,arr2);</span><br><span class="line"></span><br><span class="line"><span class="comment">//对象转换为数组</span></span><br><span class="line"><span class="keyword">var</span> argArray = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//验证是否为数字</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isNumber</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> !<span class="built_in">isNaN</span>(<span class="built_in">parseFloat</span>(n)) &amp;&amp; <span class="built_in">isFinite</span>(n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//判断是否为数组</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj) === <span class="string">'[object Array]'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取数组中的最大值和最小值</span></span><br><span class="line"><span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>, numbers);</span><br><span class="line"><span class="built_in">Math</span>.min.apply(<span class="built_in">Math</span>, numbers);</span><br><span class="line"></span><br><span class="line"><span class="comment">//清空数组</span></span><br><span class="line">arr.length = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除数组元素不要使用delete和remove</span></span><br><span class="line">items.splice(<span class="number">3</span>,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//保留小数位数</span></span><br><span class="line">number.toFixed(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//循环检查对象的属性</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> name <span class="keyword">in</span> object)&#123;</span><br><span class="line">    <span class="keyword">if</span>(object.hasOwnProperty(name))&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//逗号操作符,运算优先级最低,先计算左边再计算右边最后返回最右边</span></span><br><span class="line"><span class="keyword">var</span> c = (a++,b++,<span class="number">100</span>);</span><br><span class="line"><span class="comment">//c = 100</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//使用for循环数组的时候要将计算数组长度的逻辑放在第一个声明中</span></span><br></pre></td></tr></table></figure>
-</span>
+          <span itemprop="description">没有系统学习javascript的时候有些语法糖是没尝过的</span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/06/js-skill/">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -423,21 +530,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
