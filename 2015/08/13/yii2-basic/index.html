@@ -1,0 +1,765 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="工作以来的尝试和感想" />
+
+
+
+  <meta name="keywords" content="php,yii2," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="之前接触学习并使用过Yii2Freamwork，也研究过其部分源代码，但是随着时间推移,好多东西都淡出脑海了...，这次再从头学习一次,加深印象而且可能还会有新的体验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重学YII2--基础篇">
+<meta property="og:url" content="http://rambone.me/2015/08/13/yii2-basic/index.html">
+<meta property="og:site_name" content="Web开发工具箱">
+<meta property="og:description" content="之前接触学习并使用过Yii2Freamwork，也研究过其部分源代码，但是随着时间推移,好多东西都淡出脑海了...，这次再从头学习一次,加深印象而且可能还会有新的体验">
+<meta property="og:updated_time" content="2015-11-17T10:17:30.667Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="重学YII2--基础篇">
+<meta name="twitter:description" content="之前接触学习并使用过Yii2Freamwork，也研究过其部分源代码，但是随着时间推移,好多东西都淡出脑海了...，这次再从头学习一次,加深印象而且可能还会有新的体验">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 重学YII2--基础篇 | Web开发工具箱 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Web开发工具箱</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              重学YII2--基础篇
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-08-13T11:08:04+08:00" content="2015-08-13">
+            2015-08-13
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/技术/" itemprop="url" rel="index">
+                  <span itemprop="name">技术</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/08/13/yii2-basic/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/13/yii2-basic/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="安装配置">安装配置</h1><p>如果服务器是Apache,使用下列配置文件，在配置RESTFul API的时候还会结合.htaccess隐藏index.php，<a href="">更多</a><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DocumentRoot &#34;path/to/basic/web&#34;&#10;&#10;&#60;Directory &#34;path/to/basic/web&#34;&#62;&#10;&#10;    RewriteEngine on&#10;&#10;    RewriteCond %&#123;REQUEST_FILENAME&#125; !-f&#10;    RewriteCond %&#123;REQUEST_FILENAME&#125; !-d&#10;&#10;    RewriteRule . index.php&#10;&#10;&#60;/Directory&#62;</span><br></pre></td></tr></table></figure></p>
+<p>如果使用nginx,则使用下述配置,更多nginx配置相关可以查看另一博文<a href="">升级php&amp;配置LNMPR环境</a><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server &#123;&#10;    charset utf-8;&#10;    client_max_body_size 128M;&#10;&#10;    listen 80;&#10;&#10;&#10;    server_name mysite.local;&#10;    root        /path/to/basic/web;&#10;    index       index.php;&#10;&#10;    access_log  /path/to/basic/log/access.log main;&#10;    error_log   /path/to/basic/log/error.log;&#10;&#10;    location / &#123;&#10;&#10;        try_files $uri $uri/ /index.php?$args;&#10;    &#125;&#10;&#10;    location ~ \.php$ &#123;&#10;        include fastcgi.conf;&#10;        fastcgi_pass   127.0.0.1:9000;&#10;&#10;        try_files $uri =404;&#10;    &#125;&#10;&#10;    location ~ /\.(ht|svn|git) &#123;&#10;        deny all;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="入门注意事项">入门注意事项</h1><ol>
+<li>控制器名称对应关系 post-comment =&gt; PostCommentController</li>
+<li>控制器中操作名称的对应关系 create-commnet =&gt; actionCreateComment</li>
+<li>控制器中的参数是从请求的参数中寻找并传递，并且经过yii\helpers\Html::encode()处理防止XSS攻击。</li>
+<li>表单验证失败使用getErrors()获取错误详情</li>
+<li>用户提交表单以及验证的处理还需要使用yii\web\Controller::refresh()或者yii\web\Controller::redirect()去避免<strong>表单重复提交</strong></li>
+<li><p>在部署到服务器上时需要调整运行环境为pro,也就是需要修改yii,frontend\public\index.php,backend\public\index.php文件</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">&lt;?php</span></span><br><span class="line"><span class="comment">//将YII_DEBUG常量置为false,YII_ENV调整为prod</span></span><br><span class="line">defined(<span class="string">'YII_DEBUG'</span>) <span class="keyword">or</span> define(<span class="string">'YII_DEBUG'</span>, <span class="keyword">false</span>);</span><br><span class="line">defined(<span class="string">'YII_ENV'</span>) <span class="keyword">or</span> define(<span class="string">'YII_ENV'</span>, <span class="string">'prod'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>bootstrap数组中的每个组件都需要指定’应用组件ID’,’模块ID’,’类名’,’配置数组’,’创建并返回一个组件的匿名函数’</p>
+</li>
+<li><p>yii\web\Application::catchAll指定一个处理所有用户请求的控制器方法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    <span class="string">'catchAll'</span> =&gt; [</span><br><span class="line">        <span class="string">'offline/notice'</span>,</span><br><span class="line">        <span class="string">'param1'</span> =&gt; <span class="string">'value1'</span>,</span><br><span class="line">        <span class="string">'param2'</span> =&gt; <span class="string">'value2'</span>,</span><br><span class="line">    ],</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>控制器映射</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    <span class="string">'controllerMap'</span> =&gt; [</span><br><span class="line">        [</span><br><span class="line">            <span class="string">'account'</span> =&gt; <span class="string">'app\controllers\UserController'</span>,</span><br><span class="line">            <span class="string">'article'</span> =&gt; [</span><br><span class="line">                <span class="string">'class'</span> =&gt; <span class="string">'app\controllers\PostController'</span>,</span><br><span class="line">                <span class="string">'enableCsrfValidation'</span> =&gt; <span class="keyword">false</span>,</span><br><span class="line">            ],</span><br><span class="line">        ],</span><br><span class="line">    ],</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模块配置</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    <span class="string">'modules'</span> =&gt; [</span><br><span class="line">        <span class="comment">// "booking" 模块以及对应的类</span></span><br><span class="line">        <span class="string">'booking'</span> =&gt; <span class="string">'app\modules\booking\BookingModule'</span>,</span><br><span class="line"></span><br><span class="line">        <span class="comment">// "comment" 模块以及对应的配置数组</span></span><br><span class="line">        <span class="string">'comment'</span> =&gt; [</span><br><span class="line">            <span class="string">'class'</span> =&gt; <span class="string">'app\modules\comment\CommentModule'</span>,</span><br><span class="line">            <span class="string">'db'</span> =&gt; <span class="string">'db'</span>,</span><br><span class="line">        ],</span><br><span class="line">    ],</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>defaultRoute默认路由配置</p>
+</li>
+<li><p>安装了新的扩展可以使用extensions,默认使用@vendor/yiisoft/extensions.php由composer进行自动维护</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    <span class="string">'extensions'</span> =&gt; [</span><br><span class="line">        [</span><br><span class="line">            <span class="string">'name'</span> =&gt; <span class="string">'extension name'</span>,</span><br><span class="line">            <span class="string">'version'</span> =&gt; <span class="string">'version number'</span>,</span><br><span class="line">            <span class="string">'bootstrap'</span> =&gt; <span class="string">'BootstrapClassName'</span>,  <span class="comment">// 可选配，可为配置数组</span></span><br><span class="line">            <span class="string">'alias'</span> =&gt; [  <span class="comment">// 可选配</span></span><br><span class="line">                <span class="string">'@alias1'</span> =&gt; <span class="string">'to/path1'</span>,</span><br><span class="line">                <span class="string">'@alias2'</span> =&gt; <span class="string">'to/path2'</span>,</span><br><span class="line">            ],</span><br><span class="line">        ],</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ... 更多像上面的扩展 ...</span></span><br><span class="line"></span><br><span class="line">    ],</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>应用事件</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    <span class="string">'on beforeRequest'</span> =&gt; <span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$event</span>)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">        <span class="variable">$event</span>-&gt;isValid = <span class="keyword">false</span>; <span class="comment">//停止后续动作</span></span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br><span class="line"><span class="comment">//引导阶段可以使用下列代码</span></span><br><span class="line">\Yii::<span class="variable">$app</span>-&gt;on(\yii\base\Application::EVENT_BEFORE_REQUEST, <span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$event</span>)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>核心组件(之前未注意的)</p>
+<blockquote>
+<p>yii\base\Application::errorHandler: 处理 PHP 错误和异常<br>yii\log\Dispatcher: 管理日志对象<br>yii\web\View: 支持渲染视图<br>yii\swiftmailer\Mailer: 支持生成邮件结构并发送<br>yii\i18n\Formatter: 格式化输出显示给终端用户的数据</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="控制器相关">控制器相关</h1><ol>
+<li>控制器也是可以分目录的 admin/admin</li>
+<li>控制器中的action分为两种:内联,独立。前者为常见常用的actionIndex，后者为继承自<figure class="highlight"><figcaption><span>```的类,可以被多个控制器重用,可以参考``` yii\web\ViewAction ```和``` yii\web\ErrorAction ```,实现起来也比较简单public function run()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3. &#23545;&#20110;&#19978;&#38754;&#30340;&#29420;&#31435;action&#30340;&#36820;&#22238;&#20540;&#21487;&#20197;&#20026;&#21709;&#24212;&#23545;&#35937;&#12290;&#23545;&#20110;web&#23558;&#20219;&#24847;&#25968;&#25454;&#22635;&#20805;&#32473;```yii\web\Response::data</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="模型相关">模型相关</h1><ol>
+<li>model支持块赋值和自定义格式的数据导出</li>
+<li>在ArrayAccess数组访问和ArrayIterator数组迭代器的支持下,属性可以像数组一样访问并使用foreach迭代</li>
+<li><p>场景的设置</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 场景作为属性来设置</span></span><br><span class="line"><span class="variable">$model</span> = <span class="keyword">new</span> User;</span><br><span class="line"><span class="variable">$model</span>-&gt;scenario = <span class="string">'login'</span>;</span><br><span class="line"><span class="comment">// 场景通过构造初始化配置来设置</span></span><br><span class="line"><span class="variable">$model</span> = <span class="keyword">new</span> User([<span class="string">'scenario'</span> =&gt; <span class="string">'login'</span>]);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保留默认场景</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">scenarios</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="variable">$scenarios</span> = <span class="keyword">parent</span>::scenarios();</span><br><span class="line">    <span class="variable">$scenarios</span>[<span class="string">'login'</span>] = [<span class="string">'username'</span>, <span class="string">'password'</span>];</span><br><span class="line">    <span class="variable">$scenarios</span>[<span class="string">'register'</span>] = [<span class="string">'username'</span>, <span class="string">'email'</span>, <span class="string">'password'</span>];</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$scenarios</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<figure class="highlight"><figcaption><span>```去转换数据并格式化</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6. fields&#21487;&#20197;&#28155;&#21152;&#36807;&#28388;&#19968;&#20123;&#23383;&#27573;&#10;7. &#39640;&#32423;&#27169;&#26495;&#20013;&#21487;&#20197;&#22312;common&#20013;&#23450;&#20041;&#22522;&#31867;,&#21069;&#21518;&#21488;&#21508;&#33258;&#32487;&#25215;&#10;&#10;# &#35270;&#22270;&#10;1. ``` echo \Yii::$app-&#62;view-&#62;renderFile(&#39;@app/views/site/license.php&#39;);</span><br></pre></td></tr></table></figure></p>
+</li>
+<li><p>试图文件中获取控制器ID <figure class="highlight"><figcaption><span>```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3. &#35270;&#22270;&#20013;&#21487;&#20197;&#23450;&#20041;&#25968;&#25454;&#22359;&#10;```php&#10;&#60;?php $this-&#62;beginBlock(&#39;block1&#39;); ?&#62;&#10;...content of block1...&#10;&#60;?php $this-&#62;endBlock(); ?&#62;</span><br></pre></td></tr></table></figure></p>
+</li>
+<li><figure class="highlight"><figcaption><span>``` ``` yii\web\View::registerLinkTag() ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5. &#62; yii\base\View::EVENT_BEFORE_RENDER: &#22312;&#25511;&#21046;&#22120;&#28210;&#26579;&#25991;&#20214;&#24320;&#22987;&#26102;&#35302;&#21457;&#65292; &#35813;&#20107;&#20214;&#21487;&#35774;&#32622; yii\base\ViewEvent::isValid &#20026; false &#21462;&#28040;&#35270;&#22270;&#28210;&#26579;&#12290;&#10;   &#62; yii\base\View::EVENT_AFTER_RENDER: &#22312;&#24067;&#23616;&#20013;&#35843;&#29992; yii\base\View::beginPage() &#26102;&#35302;&#21457;&#65292; &#35813;&#20107;&#20214;&#21487;&#33719;&#21462;yii\base\ViewEvent::output&#30340;&#28210;&#26579;&#32467;&#26524;&#65292;&#21487;&#20462;&#25913;&#35813;&#23646;&#24615;&#26469;&#20462;&#25913;&#28210;&#26579;&#32467;&#26524;&#12290;&#10;   &#62; yii\base\View::EVENT_BEGIN_PAGE: &#22312;&#24067;&#23616;&#35843;&#29992; yii\base\View::beginPage() &#26102;&#35302;&#21457;&#65307;&#10;   &#62; yii\base\View::EVENT_END_PAGE: &#22312;&#24067;&#23616;&#35843;&#29992; yii\base\View::endPage() &#26159;&#35302;&#21457;&#65307;&#10;   &#62; yii\web\View::EVENT_BEGIN_BODY: &#22312;&#24067;&#23616;&#35843;&#29992; yii\web\View::beginBody() &#26102;&#35302;&#21457;&#65307;&#10;   &#62; yii\web\View::EVENT_END_BODY: &#22312;&#24067;&#23616;&#35843;&#29992; yii\web\View::endBody() &#26102;&#35302;&#21457;&#12290;&#10;&#10;# &#27169;&#22359;&#10;1. init&#21021;&#22987;&#21270;&#26041;&#27861;&#10;```php&#10;// &#20174;config.php&#21152;&#36733;&#37197;&#32622;&#26469;&#21021;&#22987;&#21270;&#27169;&#22359;&#10;\Yii::configure($this, require(__DIR__ . &#39;/config.php&#39;));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取模块实例</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$module</span> = MyModuleClass::getInstance();</span><br><span class="line"><span class="comment">// 获取ID为 "forum" 的模块</span></span><br><span class="line"><span class="variable">$module</span> = \Yii::<span class="variable">$app</span>-&gt;getModule(<span class="string">'forum'</span>);</span><br><span class="line"><span class="comment">// 获取处理当前请求控制器所属的模块</span></span><br><span class="line"><span class="variable">$module</span> = \Yii::<span class="variable">$app</span>-&gt;controller-&gt;module;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模块可以嵌套,但是子模块需要在父模块的modules属性中有所说明</p>
+</li>
+</ol>
+<h1 id="过滤器">过滤器</h1><ol>
+<li>本质是一种行为</li>
+</ol>
+<h1 id="小部件">小部件</h1><ol>
+<li>自定义小部件继承yii\base\Widget并覆盖init run方法即可创建</li>
+</ol>
+<h1 id="Assets">Assets</h1><ol>
+<li>source</li>
+</ol>
+<h1 id="其他补充">其他补充</h1><ol>
+<li>使用i18n进行翻译时,可以使用的category有两个:yii app,分别在各自的@yii @app目录下建立messages文件夹,里面对应建立语言文件夹zh-CN,再里面放置yii.php app.php,返回键值对应的一维数组</li>
+</ol>
+<h1 id="数据展示">数据展示</h1><h2 id="数据格式化">数据格式化</h2><p>1. </p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag">#php</a>
+          
+            <a href="/tags/yii2/" rel="tag">#yii2</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/22/php-skill/" rel="prev">php-skill</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/11/deploy-code-practice/" rel="next">代码发布实例</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/08/13/yii2-basic/"
+                   data-title="重学YII2--基础篇" data-url="http://rambone.me/2015/08/13/yii2-basic/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars1.githubusercontent.com/u/4715122?v=3&s=460" alt="Rambo" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Rambo</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">工作以来的尝试和感想</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zuoRambo" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/rambone" target="_blank">微博</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/Rambone" target="_blank">豆瓣</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/Rambone" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://about.me/rambone" target="_blank">aboutme</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置"><span class="nav-number">1.</span> <span class="nav-text">安装配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#入门注意事项"><span class="nav-number">2.</span> <span class="nav-text">入门注意事项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#控制器相关"><span class="nav-number">3.</span> <span class="nav-text">控制器相关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型相关"><span class="nav-number">4.</span> <span class="nav-text">模型相关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过滤器"><span class="nav-number">5.</span> <span class="nav-text">过滤器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小部件"><span class="nav-number">6.</span> <span class="nav-text">小部件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Assets"><span class="nav-number">7.</span> <span class="nav-text">Assets</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他补充"><span class="nav-number">8.</span> <span class="nav-text">其他补充</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据展示"><span class="nav-number">9.</span> <span class="nav-text">数据展示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据格式化"><span class="nav-number">9.1.</span> <span class="nav-text">数据格式化</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rambo</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"rambone"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	  <script type="text/javascript">
+  		var duoshuo_user_ID = 2028992
+  	  </script>
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

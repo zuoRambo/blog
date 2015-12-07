@@ -1,0 +1,714 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="工作以来的尝试和感想" />
+
+
+
+  <meta name="keywords" content="framework,javascript," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="underscore.js也就是传说中的&quot;瑞士军刀&quot;---&apos;_&apos;.代码比较精简又功能强大,非常值得学习，技能提升的捷径就是阅读优秀的代码,js领域则了可以学习underscore和jquery。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="underscore探究">
+<meta property="og:url" content="http://rambone.me/2015/10/21/underscore/index.html">
+<meta property="og:site_name" content="Web开发工具箱">
+<meta property="og:description" content="underscore.js也就是传说中的&quot;瑞士军刀&quot;---&apos;_&apos;.代码比较精简又功能强大,非常值得学习，技能提升的捷径就是阅读优秀的代码,js领域则了可以学习underscore和jquery。">
+<meta property="og:updated_time" content="2015-11-17T10:19:19.610Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="underscore探究">
+<meta name="twitter:description" content="underscore.js也就是传说中的&quot;瑞士军刀&quot;---&apos;_&apos;.代码比较精简又功能强大,非常值得学习，技能提升的捷径就是阅读优秀的代码,js领域则了可以学习underscore和jquery。">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> underscore探究 | Web开发工具箱 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Web开发工具箱</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              underscore探究
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-21T16:56:25+08:00" content="2015-10-21">
+            2015-10-21
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/技术/" itemprop="url" rel="index">
+                  <span itemprop="name">技术</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/10/21/underscore/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/21/underscore/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="优化的思想贯穿始终">优化的思想贯穿始终</h1><ul>
+<li><p>为了便于代码压缩,整体函数闭包</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">&#125;.call(<span class="keyword">this</span>));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为原型赋值也有利于压缩</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ArrayProto = <span class="built_in">Array</span>.prototype,ObjProto = <span class="built_in">Object</span>.prototype;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>isElement</code> <code>isArray</code> <code>isArguments</code> <code>isNaN</code> <code>isBoolean</code> <code>isUndefined</code>等元素的判断实现可参考源码,通俗易懂</p>
+</li>
+<li>js内建基本类型：<strong> 值类型 </strong><code>undefined</code> <code>number</code> <code>boolean</code> <code>string</code> <strong> 引用类型 </strong> <code>object</code> <code>function</code></li>
+<li>原生对象: <code>Null</code> <code>Number</code> <code>Boolean</code> <code>String</code> <code>Object</code> <code>Function</code> <code>Array</code> <code>RegExp</code> <code>Error</code> <code>Date</code> <code>Math</code> <code>JSON</code> <code>Global</code> <code>Arguments</code> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Predefined_Core_Objects" title="内置核心对象" target="_blank" rel="external">更多参考</a></li>
+<li>Functions 具有length属性表示能够接受的参数个数</li>
+<li><figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">原理是根据链式作用域(chain <span class="keyword">scope</span>)的原则，上级变量对下级可见。</span><br><span class="line">如果在对象或者函数内部再定义函数，而内部的函数使用了上级的变量，</span><br><span class="line">当将这个函数被作为返回值时，返回的函数就成为闭包，</span><br><span class="line">而上级的变量因为仍旧被使用因此会一直保存在内存中。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="部分源码注释">部分源码注释</h1><h2 id="each">each</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//_.each是underscore.js的基础方法，基于集合的方法很多有需要用到each</span></span><br><span class="line"><span class="comment">//别名是forEach，context是可选参数，如果要修改iterator的调用对象为context，即函数中this为context，就传递这个参数，否则context为undefined</span></span><br><span class="line">  _.each = _.forEach = <span class="function"><span class="keyword">function</span>(<span class="params">obj, iterator, context</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (obj == <span class="literal">null</span>) <span class="keyword">return</span> obj;</span><br><span class="line">    <span class="comment">//判断是否是数组或字符串，实际上function类型的变量也有length属性，但是function的[i]返回undefined，所以后面相当于对undefined进行变换</span></span><br><span class="line">    <span class="keyword">if</span> (obj.length === +obj.length) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, length = obj.length; i &lt; length; i++) &#123;</span><br><span class="line">		<span class="comment">//breaker是undercore定义的一个空对象，用于跳出循环，注意&#123;&#125;===&#123;&#125;返回false</span></span><br><span class="line">        <span class="keyword">if</span> (iterator.call(context, obj[i], i, obj) === breaker) <span class="keyword">return</span>;    </span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; <span class="comment">//其余类型，包括很多标准的内置对象</span></span><br><span class="line">	  <span class="comment">//只有Object才有key-value对，才进行处理，其他类型的对象不处理</span></span><br><span class="line">      <span class="keyword">var</span> keys = _.keys(obj);</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, length = keys.length; i &lt; length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (iterator.call(context, obj[keys[i]], keys[i], obj) === breaker) <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> obj;  <span class="comment">//返回obj自身，未经任何处理</span></span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="map">map</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">_.map = _.collect = <span class="function"><span class="keyword">function</span>(<span class="params">obj, iterator, context</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> results = [];</span><br><span class="line">  <span class="keyword">if</span> (obj == <span class="literal">null</span>) <span class="keyword">return</span> results;</span><br><span class="line">  <span class="comment">//这里函数的三个传入参数分别是obj的一个成员的值，key或者index，和obj自己，由each函数决定  </span></span><br><span class="line">  _.each(obj, <span class="function"><span class="keyword">function</span>(<span class="params">value, index, list</span>) </span>&#123;				   </span><br><span class="line"></span><br><span class="line">    results.push(iterator.call(context, value, index, list));  <span class="comment">//保存处理结果</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> results;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="some">some</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果obj是Object类型的话，会判断其每一个属性的值是否满足prediacte，这是由each方法决定的</span></span><br><span class="line">_.some = _.any = <span class="function"><span class="keyword">function</span>(<span class="params">obj, predicate, context</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//如果predicate为空，则将predicate赋值为空函数[Function]</span></span><br><span class="line">  predicate || (predicate = _.identity);</span><br><span class="line">  <span class="keyword">var</span> result = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">if</span> (obj == <span class="literal">null</span>) <span class="keyword">return</span> result;</span><br><span class="line">  _.each(obj, <span class="function"><span class="keyword">function</span>(<span class="params">value, index, list</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//这里发现一个问题，就是each循环无法break，必须将全部的对象都遍历一遍，应该是一个可改进的地方</span></span><br><span class="line">    <span class="keyword">if</span> (result || (result = predicate.call(context, value, index, list))) <span class="keyword">return</span> breaker;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> !!result; <span class="comment">//两次取反，保证返回的是boolean类型，0/null/undefined进行两次取反都会返回false</span></span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="every">every</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">_.every = _.all = <span class="function"><span class="keyword">function</span>(<span class="params">obj, predicate, context</span>) </span>&#123;</span><br><span class="line">  predicate || (predicate = _.identity);</span><br><span class="line">  <span class="keyword">var</span> result = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">if</span> (obj == <span class="literal">null</span>) <span class="keyword">return</span> result;</span><br><span class="line">  _.each(obj, <span class="function"><span class="keyword">function</span>(<span class="params">value, index, list</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//开始没看明白，“result=result”是什么意思？后来想到运算符优先级才看明白，“=”的优先级比“&amp;&amp;”要低，</span></span><br><span class="line">    <span class="comment">//javascript为了减小文件大小，多余的运算符一概不要，能不能在开发版不要这么省啊</span></span><br><span class="line">    <span class="keyword">if</span> (!(result = result &amp;&amp; predicate.call(context, value, index, list))) <span class="keyword">return</span> breaker; </span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> !!result;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="indexOf">indexOf</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">_.indexOf = <span class="function"><span class="keyword">function</span>(<span class="params">array, item, isSorted</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (array == <span class="literal">null</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>, length = array.length;</span><br><span class="line">    <span class="keyword">if</span> (isSorted) &#123;</span><br><span class="line">	  <span class="comment">//如果是数字，则从数字开始，逐个元素与item对比，直到找到</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> isSorted == <span class="string">'number'</span>) &#123; </span><br><span class="line">        i = (isSorted &lt; <span class="number">0</span> ? <span class="built_in">Math</span>.max(<span class="number">0</span>, length + isSorted) : isSorted);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123; <span class="comment">//如果isSorted是true，使用二分查找，由sortedIndex实现。实际上没有对isSorted进行过多校验，由开发者自己保证正确性</span></span><br><span class="line">        i = _.sortedIndex(array, item);</span><br><span class="line">        <span class="keyword">return</span> array[i] === item ? i : -<span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (; i &lt; length; i++) <span class="keyword">if</span> (array[i] === item) <span class="keyword">return</span> i;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="invoke">invoke</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">_.invoke = <span class="function"><span class="keyword">function</span>(<span class="params">obj, method</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//invoke方法接受多于两个参数作为函数参数，从第3个参数开始将作为被调用函数的参数</span></span><br><span class="line">    <span class="keyword">var</span> args = slice.call(<span class="built_in">arguments</span>, <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">var</span> isFunc = _.isFunction(method);</span><br><span class="line">    <span class="keyword">return</span> _.map(obj, <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">      <span class="comment">//method可以是对象的属性名，这种情况就是调用对象自己属性名为method的方法</span></span><br><span class="line">      <span class="keyword">return</span> (isFunc ? method : value[method]).apply(value, args); </span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="toArray">toArray</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">_.toArray = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!obj) <span class="keyword">return</span> [];</span><br><span class="line">    <span class="comment">//slice.call会将Array-like对象转化为Array，难道isArray判断有问题？</span></span><br><span class="line">    <span class="keyword">if</span> (_.isArray(obj)) <span class="keyword">return</span> slice.call(obj);</span><br><span class="line">    <span class="comment">//其他有length属性的对象，_identity返回参数自己，组成新数组。但是不清楚什么类型的对象会走到这里？</span></span><br><span class="line">    <span class="keyword">if</span> (obj.length === +obj.length) <span class="keyword">return</span> _.map(obj, _.identity);</span><br><span class="line">    <span class="keyword">return</span> _.values(obj);  <span class="comment">//Object，返回属性的value组成数组</span></span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="memoize">memoize</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">_.memoize = <span class="function"><span class="keyword">function</span>(<span class="params">func, hasher</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> memo = &#123;&#125;;</span><br><span class="line">  hasher || (hasher = _.identity);</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> key = hasher.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    <span class="comment">//利用闭包来保存结果，好处在大量运算时避免了对func函数的相同参数情况下的重复调用，只要执行过一次，以后直接取结果</span></span><br><span class="line">    <span class="keyword">return</span> _.has(memo, key) ? memo[key] : (memo[key] = func.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>));</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="isType">isType</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">_.each([<span class="string">'Arguments'</span>, <span class="string">'Function'</span>, <span class="string">'String'</span>, <span class="string">'Number'</span>, <span class="string">'Date'</span>, <span class="string">'RegExp'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;    </span><br><span class="line">  <span class="comment">//定义了一批isType函数，each没有返回值，但是相当于循环展开</span></span><br><span class="line">    _[<span class="string">'is'</span> + name] = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> toString.call(obj) == <span class="string">'[object '</span> + name + <span class="string">']'</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/framework/" rel="tag">#framework</a>
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/12/big-data/" rel="prev">大数据</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/10/php-generator/" rel="next">php生成器</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/10/21/underscore/"
+                   data-title="underscore探究" data-url="http://rambone.me/2015/10/21/underscore/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars1.githubusercontent.com/u/4715122?v=3&s=460" alt="Rambo" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Rambo</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">工作以来的尝试和感想</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zuoRambo" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/rambone" target="_blank">微博</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/Rambone" target="_blank">豆瓣</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/Rambone" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://about.me/rambone" target="_blank">aboutme</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#优化的思想贯穿始终"><span class="nav-number">1.</span> <span class="nav-text">优化的思想贯穿始终</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部分源码注释"><span class="nav-number">2.</span> <span class="nav-text">部分源码注释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#each"><span class="nav-number">2.1.</span> <span class="nav-text">each</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map"><span class="nav-number">2.2.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#some"><span class="nav-number">2.3.</span> <span class="nav-text">some</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every"><span class="nav-number">2.4.</span> <span class="nav-text">every</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#indexOf"><span class="nav-number">2.5.</span> <span class="nav-text">indexOf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#invoke"><span class="nav-number">2.6.</span> <span class="nav-text">invoke</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#toArray"><span class="nav-number">2.7.</span> <span class="nav-text">toArray</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#memoize"><span class="nav-number">2.8.</span> <span class="nav-text">memoize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#isType"><span class="nav-number">2.9.</span> <span class="nav-text">isType</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rambo</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"rambone"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	  <script type="text/javascript">
+  		var duoshuo_user_ID = 2028992
+  	  </script>
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
