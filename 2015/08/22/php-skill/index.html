@@ -41,9 +41,9 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="php-skill">
 <meta property="og:url" content="http://rambone.me/2015/08/22/php-skill/index.html">
-<meta property="og:site_name" content="Web开发工具箱">
+<meta property="og:site_name" content="Web开发实践手札">
 <meta property="og:description" content="PHP利用PHPOffice提供的套件可以方便地操作Excel Word等文件,">
-<meta property="og:updated_time" content="2015-11-17T10:17:19.390Z">
+<meta property="og:updated_time" content="2015-11-17T10:17:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php-skill">
 <meta name="twitter:description" content="PHP利用PHPOffice提供的套件可以方便地操作Excel Word等文件,">
@@ -56,7 +56,7 @@
   };
 </script>
 
-  <title> php-skill | Web开发工具箱 </title>
+  <title> php-skill | Web开发实践手札 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -84,7 +84,7 @@
       <span class="logo">
         <i class="icon-next-logo"></i>
       </span>
-      <span class="site-title">Web开发工具箱</span>
+      <span class="site-title">Web开发实践手札</span>
   </a>
   <span class="logo-line-after"><i></i></span>
 </h1>
@@ -229,7 +229,7 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="PHPExcel操作excel">PHPExcel操作excel</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$objSheet</span>-&gt;fromArray([</span><br><span class="line">	[],</span><br><span class="line">	[<span class="string">''</span>,<span class="string">'姓名'</span>,<span class="string">'年龄'</span>],</span><br><span class="line">	[<span class="string">''</span>,<span class="string">'Rambo'</span>，<span class="string">'23'</span>]</span><br><span class="line">]);</span><br><span class="line"><span class="comment">//创建工作薄</span></span><br><span class="line"><span class="variable">$objPHPExcel</span>-&gt;createSheet();</span><br><span class="line"><span class="comment">//设置默认样式</span></span><br><span class="line"><span class="variable">$objSheet</span>-&gt;getDefaultStyle()-&gt;getAlignment()-&gt;setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);</span><br><span class="line"></span><br><span class="line"><span class="variable">$objSheet</span>-&gt;getStyle(<span class="string">'A1:E5'</span>)-&gt;getFont()-&gt;setSize(<span class="number">20</span>)-&gt;setName(<span class="string">'楷体'</span>)-&gt;setBold(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$objSheet</span>-&gt;getStyle()-&gt;applyFromArray(<span class="variable">$styleArray</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//单元格内换行\n</span></span><br><span class="line"><span class="variable">$objSheet</span>-&gt;getStyle()-&gt;setWrapText(<span class="keyword">true</span>);</span><br><span class="line"><span class="variable">$objSheet</span>-&gt;getStyle()-&gt;getNumberFormat()-&gt;setFormatCode();</span><br><span class="line"></span><br><span class="line"><span class="comment">//从Excel文件读取数据</span></span><br><span class="line"><span class="variable">$objPHPExcel</span>-&gt;getSheet(<span class="number">0</span>)-&gt;toArray();</span><br><span class="line"><span class="comment">//逐行读取</span></span><br><span class="line"><span class="keyword">foreach</span>(<span class="variable">$objPHPExcel</span>-&gt;getWorksheetIterator() <span class="keyword">as</span> <span class="variable">$sheet</span>)&#123;</span><br><span class="line">	<span class="keyword">foreach</span>(<span class="variable">$sheet</span>-&gt;getRowIterator() <span class="keyword">as</span> <span class="variable">$row</span>)&#123;</span><br><span class="line">		<span class="keyword">foreach</span>(<span class="variable">$row</span>-&gt;getCellIterator() <span class="keyword">as</span> <span class="variable">$cell</span>)&#123;</span><br><span class="line">			<span class="variable">$cell</span>-&gt;getValue();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//PHPExcel 也可以使用缓存比如memcache</span></span><br><span class="line"><span class="comment">// PHPExcel_RichText 设置富文本</span></span><br><span class="line"><span class="comment">//PHPExcel 加载指定路径的指定图片</span></span><br><span class="line"><span class="variable">$objDrawing</span> = <span class="keyword">new</span> PHPExcel_WorkSheet_Drawing();</span><br><span class="line"><span class="variable">$objDrawing</span>-&gt;setPath(<span class="string">'/images/test.jpg'</span>);</span><br><span class="line"><span class="variable">$objDrawing</span>-&gt;setCoordinates(<span class="string">'F6'</span>);</span><br><span class="line"><span class="variable">$objDrawing</span>-&gt;setWidth(<span class="number">500</span>);</span><br><span class="line"><span class="variable">$objDrawing</span>-&gt;setWorkSheet(<span class="variable">$objSheet</span>);</span><br></pre></td></tr></table></figure></span>
+        <span itemprop="articleBody"><h1 id="PHPExcel_u64CD_u4F5Cexcel"><a href="#PHPExcel_u64CD_u4F5Cexcel" class="headerlink" title="PHPExcel操作excel"></a>PHPExcel操作excel</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$objSheet</span>-&gt;fromArray([</span><br><span class="line">	[],</span><br><span class="line">	[<span class="string">''</span>,<span class="string">'姓名'</span>,<span class="string">'年龄'</span>],</span><br><span class="line">	[<span class="string">''</span>,<span class="string">'Rambo'</span>，<span class="string">'23'</span>]</span><br><span class="line">]);</span><br><span class="line"><span class="comment">//创建工作薄</span></span><br><span class="line"><span class="variable">$objPHPExcel</span>-&gt;createSheet();</span><br><span class="line"><span class="comment">//设置默认样式</span></span><br><span class="line"><span class="variable">$objSheet</span>-&gt;getDefaultStyle()-&gt;getAlignment()-&gt;setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);</span><br><span class="line"></span><br><span class="line"><span class="variable">$objSheet</span>-&gt;getStyle(<span class="string">'A1:E5'</span>)-&gt;getFont()-&gt;setSize(<span class="number">20</span>)-&gt;setName(<span class="string">'楷体'</span>)-&gt;setBold(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$objSheet</span>-&gt;getStyle()-&gt;applyFromArray(<span class="variable">$styleArray</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//单元格内换行\n</span></span><br><span class="line"><span class="variable">$objSheet</span>-&gt;getStyle()-&gt;setWrapText(<span class="keyword">true</span>);</span><br><span class="line"><span class="variable">$objSheet</span>-&gt;getStyle()-&gt;getNumberFormat()-&gt;setFormatCode();</span><br><span class="line"></span><br><span class="line"><span class="comment">//从Excel文件读取数据</span></span><br><span class="line"><span class="variable">$objPHPExcel</span>-&gt;getSheet(<span class="number">0</span>)-&gt;toArray();</span><br><span class="line"><span class="comment">//逐行读取</span></span><br><span class="line"><span class="keyword">foreach</span>(<span class="variable">$objPHPExcel</span>-&gt;getWorksheetIterator() <span class="keyword">as</span> <span class="variable">$sheet</span>)&#123;</span><br><span class="line">	<span class="keyword">foreach</span>(<span class="variable">$sheet</span>-&gt;getRowIterator() <span class="keyword">as</span> <span class="variable">$row</span>)&#123;</span><br><span class="line">		<span class="keyword">foreach</span>(<span class="variable">$row</span>-&gt;getCellIterator() <span class="keyword">as</span> <span class="variable">$cell</span>)&#123;</span><br><span class="line">			<span class="variable">$cell</span>-&gt;getValue();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//PHPExcel 也可以使用缓存比如memcache</span></span><br><span class="line"><span class="comment">// PHPExcel_RichText 设置富文本</span></span><br><span class="line"><span class="comment">//PHPExcel 加载指定路径的指定图片</span></span><br><span class="line"><span class="variable">$objDrawing</span> = <span class="keyword">new</span> PHPExcel_WorkSheet_Drawing();</span><br><span class="line"><span class="variable">$objDrawing</span>-&gt;setPath(<span class="string">'/images/test.jpg'</span>);</span><br><span class="line"><span class="variable">$objDrawing</span>-&gt;setCoordinates(<span class="string">'F6'</span>);</span><br><span class="line"><span class="variable">$objDrawing</span>-&gt;setWidth(<span class="number">500</span>);</span><br><span class="line"><span class="variable">$objDrawing</span>-&gt;setWorkSheet(<span class="variable">$objSheet</span>);</span><br></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -320,7 +320,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -334,7 +334,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -374,6 +374,13 @@
 
         <div class="links-of-author motion-element">
           
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+              </span>
+            
+          
         </div>
 
       </section>
@@ -384,7 +391,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PHPExcel操作excel"><span class="nav-number">1.</span> <span class="nav-text">PHPExcel操作excel</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PHPExcel_u64CD_u4F5Cexcel"><span class="nav-number">1.</span> <span class="nav-text">PHPExcel操作excel</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -400,8 +407,8 @@
     <footer id="footer" class="footer">
       <div class="footer-inner"> <div class="copyright" >
   
-  &copy; &nbsp; 
-  <span itemprop="copyrightYear">2015</span>
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>
