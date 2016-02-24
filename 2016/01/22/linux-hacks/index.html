@@ -1,0 +1,835 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="工作以来的尝试和感想" />
+
+
+
+  <meta name="keywords" content="linux," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="小皮在群里发了一个网址，https://wrfly.gitbooks.io/linux-101-hacks/content/index.html,里面介绍了一些Linux bash的技巧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux-hacks（奇技淫巧）">
+<meta property="og:url" content="http://rambone.me/2016/01/22/linux-hacks/index.html">
+<meta property="og:site_name" content="Web开发实践手札">
+<meta property="og:description" content="小皮在群里发了一个网址，https://wrfly.gitbooks.io/linux-101-hacks/content/index.html,里面介绍了一些Linux bash的技巧。">
+<meta property="og:updated_time" content="2016-02-24T02:34:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux-hacks（奇技淫巧）">
+<meta name="twitter:description" content="小皮在群里发了一个网址，https://wrfly.gitbooks.io/linux-101-hacks/content/index.html,里面介绍了一些Linux bash的技巧。">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> linux-hacks（奇技淫巧） | Web开发实践手札 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Web开发实践手札</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              linux-hacks（奇技淫巧）
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-01-22T11:59:00+08:00" content="2016-01-22">
+            2016-01-22
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/技术/" itemprop="url" rel="index">
+                  <span itemprop="name">技术</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/22/linux-hacks/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/22/linux-hacks/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="CD__u76F8_u5173"><a href="#CD__u76F8_u5173" class="headerlink" title="CD 相关"></a>CD 相关</h1><ol>
+<li><code>CDPATH</code>变量的设置，可以作为所有目录前缀</li>
+<li><code>$OLDPWD</code>上一层目录</li>
+<li><code>dirs</code> <code>pushd</code> <code>popd</code> 可以操作目录栈</li>
+<li><code>cd -</code> 快速回到上一工作目录</li>
+<li><code>shopt</code> bash的配置项配置命令 <strong>Mac不支持</strong> </li>
+</ol>
+<h1 id="u57FA_u672C_u547D_u4EE4"><a href="#u57FA_u672C_u547D_u4EE4" class="headerlink" title="基本命令"></a>基本命令</h1><h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><ol>
+<li><code>grep</code>查找命令比较强大尤其是支持正则表达式</li>
+<li><code>-v</code> 反向查找，排除符合的</li>
+<li><code>-c</code> 显示匹配到的行数</li>
+<li><code>-i</code> 忽略大小写</li>
+<li><code>-r</code> 递归搜索</li>
+<li><code>-l</code> 只显示匹配的文件名</li>
+<li><code>-E</code> 扩展模式，后面接正则表达式</li>
+<li><code>-n</code> 显示行号</li>
+<li><code>grep &#39;^$&#39; file_name</code> 匹配空行</li>
+<li><code>grep &quot;^[0-9]\{1,5\}&quot; file_name</code> 99999以内的数字</li>
+<li><code>grep -i &quot;\bthe\b&quot; file_name</code> \b是单词边界  匹配含有the的</li>
+<li><code>grep -iw &quot;is&quot; file_name</code> 单词级别的匹配，“this”不会被匹配到</li>
+<li><code>-A n</code> <code>-B n</code> <code>-C n</code>把匹配到的地方前后周围的几行也打印出来，获取上下文环境</li>
+</ol>
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><ol>
+<li><code>mdfind</code> 是OSX的命令，功能比较强大 效率也比较高，是spotlight文件查找的终端版本</li>
+<li><code>find . -name &#39;*.log&#39;</code> 查找log后缀的文件</li>
+<li><code>find . -type f -size +20</code> 查找20K以上的文件</li>
+<li><code>find . -mtime +60</code> 查找60天前修改的文件</li>
+<li><code>find / -type f -name *.log -size +100M -exec rm -rf {} \;</code> 查找并删除文件</li>
+<li>上面的命令等效于<code>find / -type f -name *.log -size +100M -delete</code></li>
+<li><code>find / -newer /etc/passwd</code> 查找更改时间比passwd更新的文件</li>
+<li><code>find -maxdepth 2 -name passwd</code> 类似于<code>du</code>可以设定查询目录深度</li>
+<li><code>find -perm 040 -type f</code> 查找执行条件满足查询的文件</li>
+<li><code>find ~ -type f -exec ls -s {} \; |sort -n -r |head -5</code> 查找最大的5个文件</li>
+<li><code>find / -type f -name *.zip -size +100M -exec rm -i {} \;</code> 查找并删除百兆以上的压缩包</li>
+</ol>
+<h2 id="u540E_u53F0_u8FD0_u884C_u7A0B_u5E8F"><a href="#u540E_u53F0_u8FD0_u884C_u7A0B_u5E8F" class="headerlink" title="后台运行程序"></a>后台运行程序</h2><ol>
+<li><code>&amp;</code></li>
+<li><code>nohup bash_file &amp;&gt; /dev/null &amp;</code></li>
+<li><code>screen</code> <code>screen -S session_name -dm</code> 一开始就断开的session并自定义名字 <code>screen -ls</code>查看session <code>screen -r session_name</code>恢复session，可通过session_id <code>ctrl+a d</code>暂时断开 <code>ctrl+a w</code>列出window <code>ctrl+a A</code>命名 <code>ctrl+a k</code>杀掉 <code>ctrl+a c</code>创建</li>
+<li><code>tmux</code></li>
+<li><code>at -f bash_file 10 am tomorrow</code> <code>atq</code>查看队列 <code>atrm</code> <code>at -d</code>删除计划任务</li>
+<li><code>watch -n 5 command</code></li>
+</ol>
+<h2 id="wget_u4E0B_u8F7D_u529F_u80FD"><a href="#wget_u4E0B_u8F7D_u529F_u80FD" class="headerlink" title="wget下载功能"></a>wget下载功能</h2><ol>
+<li><code>wget -0 file_save_name http://my_host.com</code></li>
+<li><code>wget --limit-rate=200k http://my_host.com</code></li>
+<li><code>wget -c http://my_host.com</code> 断点续传</li>
+<li><code>wget -b -o download_log_file http://my_host.com</code> 后台下载</li>
+<li><code>wget --spider --user-agent=&#39;spider&#39;</code> 指定UA并检查文件并不下载</li>
+<li><code>wget --tries=7 http://my_host.com</code> 重试次数</li>
+<li><code>wget --mirror -p --convert-links -P ./local_directory</code> 复制整站并转换链接为relative</li>
+<li><code>wget -r -reject=gif -i -Q5m http://my_host.com</code> 递归下载不下动图大于5M就quit</li>
+</ol>
+<h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><blockquote>
+<p>sed 和 awk都应该着重介绍，sed内容比较庞大，已经作为一门“语言”</p>
+</blockquote>
+<ol>
+<li><code>sed &#39;s/REGEXP/REPLACEMENT/FLAGS&#39; file_name</code></li>
+<li><code>sed &#39;s/women/us/2 file_name&#39;</code> 把第二个women换成us</li>
+<li>``</li>
+<li>``</li>
+</ol>
+<h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><ol>
+<li><code>awk &#39;/search_pattern/ { action } /search_pattern/ { action }&#39; file_name</code></li>
+<li><code>awk &#39;{print;}&#39; awk_file</code> 原封输出</li>
+<li><code>awk &#39;{print $2,$5}&#39; awk_file</code> 打印2 5字段</li>
+<li><code>awk &#39;$1 &gt; 200&#39; awk_file</code> 逻辑表达式</li>
+<li><code>awk &#39;$4 ~ /[aA][a-z0-9]/&#39; awk_file</code> 正则匹配</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEGIN &#123; Actions&#125;</span><br><span class="line">&#123;ACTION&#125; <span class="comment"># 文件中的每一行默认的动作</span></span><br><span class="line">END &#123; Actions &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><ol>
+<li><code>g``G``0``$</code> 光标移动 文首 文末 行首 行末</li>
+<li><code>%</code> 半闭合的括号间移动</li>
+<li><code>vim +10 /etc/passwd</code> 打开文件并定位到第十行</li>
+</ol>
+<h2 id="u5176_u4ED6"><a href="#u5176_u4ED6" class="headerlink" title="其他"></a>其他</h2><ol>
+<li><code>join</code> 合并两个文件</li>
+<li><code>xargs</code> 将输出内容当作参数传给下一命令 <code>find / -name *.jpg -type f -print | xargs tar -cvzf images.tar.gz</code></li>
+<li><code>sort</code> 非常实用的命令，给文件内容以及屏幕输出等任何东西排序 <code>ls -alh |sort -nrk 5</code> 按照文件大小倒序</li>
+<li><code>uniq</code> 类似上面的sort命令 去重的</li>
+<li><code>stat</code> 查看文件属性</li>
+<li><code>cut</code> 切割数据，有点类似<code>awk</code> <code>sed</code>,用法<code>cut -d : -f 1,4 file_name</code>除了使用分隔符还可以按照字符分隔，<code>cut -d , -c 8 file_name</code>,另外<code>-f</code>参数可以使用<code>2-</code>表示2到末尾</li>
+<li><code>diff</code> 比较两个文件的不同还可以使用<code>vimdiff</code> <code>diff -u</code></li>
+<li><code>ac -d account_name</code> 查看登录使用时间</li>
+<li><code>less file_name</code> 查看大文件，<code>vim</code>式控制文件：<code>f``b</code>前后翻页 <code>g``G</code>文件首尾 <code>v</code>直接编辑 <code>&amp;parrtern</code>正则查找 <code>m</code>制作标记 <code>ctrl+g</code>显示光标位置 <code>F</code>截取文件流 <code>:e</code>打开另一个文件 也可以查看多个文件</li>
+<li><code>chmod u+x,g-rw file_name</code> 设置文件权限，<code>-R</code>递归处理，<strong><code>chmod --reference=file1 file2</code> 给文件2设置和1一样的权限</strong></li>
+<li><code>tail -f access.log -f error.log</code> 查看两个增长的文件，调试web的时候比较有用</li>
+<li><code>date --date=&#39;tomorrow&#39; +%s</code> 明天的unix时间戳</li>
+<li><code>zip -P your_password zip_file.zip files_name_or_pattern</code> 可以指定压缩比，设置密码</li>
+<li><code>unzip -t</code> <code>unzip -l</code> 解压测试或查看内部文件</li>
+<li><code>tar -czvf tar_file.tar.gz your_files</code> 压缩 <code>-j</code>换成bz2格式 <code>tar -xzvf tar_file.tar.gz</code> 解压</li>
+</ol>
+<h1 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h1><ol>
+<li>逃逸字符<code>~</code> 连接后<code>~^Z</code>可以将当前ssh置于后台，<code>jobs</code>可以进行查看并通过<code>fg</code>切换回来</li>
+<li><code>/etc/ssh/ssd_config</code>配置文件常见配置项目说明</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 禁止root用户登录</span></span><br><span class="line">PermitRootLogin no</span><br><span class="line"></span><br><span class="line">＃ 允许登录的用户／用户组</span><br><span class="line">AllowUsers root rambone</span><br><span class="line">AllowGroups root</span><br><span class="line"></span><br><span class="line"><span class="comment"># 禁止的用户／用户组</span></span><br><span class="line">DenyUsers root rambone</span><br><span class="line">DenyGrops root</span><br><span class="line"></span><br><span class="line"><span class="comment"># 登陆时限</span></span><br><span class="line">LoginGraceTime <span class="number">1</span>m</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不活动自动断开</span></span><br><span class="line">ClientAliveInterval <span class="number">600</span></span><br><span class="line">ClientAliveCountMax <span class="number">0</span> <span class="comment">#从不检查</span></span><br></pre></td></tr></table></figure>
+<h1 id="history_u76F8_u5173"><a href="#history_u76F8_u5173" class="headerlink" title="history相关"></a>history相关</h1><ol>
+<li><code>ctrl+a</code> <code>ctrl+e</code> <code>ctrl+k</code>删除至行尾 <code>ctrl+u</code> <code>ctrl+w</code>删除单个单词</li>
+<li><code>ctrl+r</code>搜索历史命令 <code>ctrl+l</code>清屏 <code>ctrl+s</code>阻止屏幕输出 <code>ctrl+q</code>允许屏幕输出 <code>ctrl+c</code> <code>ctrl+z</code>挂起</li>
+<li><code>!$</code>上一条命令最后参数 <code>!to:p</code>打印最近一次to的命令 <code>!N</code>上N条命令 <code>!*</code>上一条命令参数 <code>!^</code>上一条命令第一个参数</li>
+<li><code>export HISTCONTROL=ignoredups</code>相邻命令去重 <code>erasedups</code>历史命令去重 <code>export HISTIGNORE=&quot;pwd:ls:ls -ltr&quot;</code>忽略不记录某些命令</li>
+<li>``</li>
+</ol>
+<h1 id="u7CFB_u7EDF_u4EFB_u52A1_u7BA1_u7406"><a href="#u7CFB_u7EDF_u4EFB_u52A1_u7BA1_u7406" class="headerlink" title="系统任务管理"></a>系统任务管理</h1><h2 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h2><h2 id="iptables"><a href="#iptables" class="headerlink" title="iptables"></a>iptables</h2><h1 id="u7CFB_u7EDF_u6027_u80FD_u76D1_u63A7"><a href="#u7CFB_u7EDF_u6027_u80FD_u76D1_u63A7" class="headerlink" title="系统性能监控"></a>系统性能监控</h1><ol>
+<li><code>free -th</code></li>
+<li><code>top</code> 使用<code>f</code> 设置要查看的field以及排序依据 使用<code>c</code>显示进程路径</li>
+<li><code>df -Th</code> 查看磁盘使用情况</li>
+<li><code>du -h --max-depth=1</code> 查看目录文件及磁盘占用</li>
+<li><code>lsof /usr/bin/vim -u root</code> 查看root用户使用vim打开的文件</li>
+<li><code>vmstat 1 10</code> 每一秒显示一次，显示10次 系统内存，SWAP，磁盘IO CPU等使用情况</li>
+<li><code>netstat -ntap</code> 显示所有TCP连接（包括监听，连接状态）及其进程与程序</li>
+<li><code>netstat --route</code> 显示路由信息</li>
+<li><code>sysctl -a</code> 显示所有内核参数</li>
+<li><code>nice -num_value process_name</code> 调整进程优先级，-20最高,20最低</li>
+<li><code>kill</code> <code>pkill</code> 杀进程</li>
+<li><code>ps axuf</code> 显示正在运行的进程，进程树</li>
+</ol>
+<h1 id="u8F6F_u4EF6_u5B89_u88C5"><a href="#u8F6F_u4EF6_u5B89_u88C5" class="headerlink" title="软件安装"></a>软件安装</h1><ol>
+<li><code>rpm -ivh xxx.rpm</code> 安装</li>
+<li><code>rpm -qa --queryformat &#39;%{name}-%{version}\n&#39;</code>以指定的格式查看所有已安装的包信息</li>
+<li><code>rpm -qip xxx.rpm</code> 查看安装包的具体信息(name version url summary)等信息</li>
+<li><code>rpm -qlp xxx.rpm</code> 罗列包内的文件</li>
+<li><code>rpm -qRp xxx.rpm</code> 查看依赖</li>
+<li><code>apt-get install xxx</code> 安装软件并处理好依赖问题</li>
+<li><code>apt-get purge xxx</code>  彻底卸载，移除配置 <code>apt-get remove xxx</code>  移除二进制文件</li>
+<li><code>apt-cache search ^nginx$</code> 使用正则搜索软件包</li>
+<li><code>dpkg -l</code> 列出安装的包</li>
+</ol>
+<h1 id="u989D_u5916_u7684_u6280_u5DE7"><a href="#u989D_u5916_u7684_u6280_u5DE7" class="headerlink" title="额外的技巧"></a>额外的技巧</h1><ol>
+<li><code>tee</code> 用vim打开了一个没有写权限的文件，但是已经编辑了半天了，<code>:w !sudo tee &gt; /dev/null %</code>可以拯救你于水火</li>
+<li>oh-my-zsh中的主题就是设置自定义的函数以及PS1 PROMPT等参数</li>
+<li><code>your_command 2&gt;&gt;/dev/null</code> 将错误提示等输出隐藏，<code>Permission denied</code>信息就看不见了</li>
+<li></li>
+</ol>
+<h1 id="u57FA_u7840_u77E5_u8BC6_u8865_u5145_u8BF4_u660E"><a href="#u57FA_u7840_u77E5_u8BC6_u8865_u5145_u8BF4_u660E" class="headerlink" title="基础知识补充说明"></a>基础知识补充说明</h1><ol>
+<li>文件Access time （文件被访问的时候更新） Modification time（文件内容修改的时候更新） Change time （inode data更新的时候更新）</li>
+<li>当目录里面的文件被访问的时候目录被访问 –Access time</li>
+</ol>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/15/tgpl/" rel="prev">《the go programming language》学习笔记</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/11/jquery-fn/" rel="next">jquery-fn</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2016/01/22/linux-hacks/"
+                   data-title="linux-hacks（奇技淫巧）" data-url="http://rambone.me/2016/01/22/linux-hacks/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars1.githubusercontent.com/u/4715122?v=3&s=460" alt="Rambo" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Rambo</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">工作以来的尝试和感想</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zuoRambo" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/rambone" target="_blank">微博</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/Rambone" target="_blank">豆瓣</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/Rambone" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://about.me/rambone" target="_blank">aboutme</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CD__u76F8_u5173"><span class="nav-number">1.</span> <span class="nav-text">CD 相关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u57FA_u672C_u547D_u4EE4"><span class="nav-number">2.</span> <span class="nav-text">基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#grep"><span class="nav-number">2.1.</span> <span class="nav-text">grep</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find"><span class="nav-number">2.2.</span> <span class="nav-text">find</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u540E_u53F0_u8FD0_u884C_u7A0B_u5E8F"><span class="nav-number">2.3.</span> <span class="nav-text">后台运行程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wget_u4E0B_u8F7D_u529F_u80FD"><span class="nav-number">2.4.</span> <span class="nav-text">wget下载功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sed"><span class="nav-number">2.5.</span> <span class="nav-text">sed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk"><span class="nav-number">2.6.</span> <span class="nav-text">awk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim"><span class="nav-number">2.7.</span> <span class="nav-text">vim</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5176_u4ED6"><span class="nav-number">2.8.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh"><span class="nav-number">3.</span> <span class="nav-text">ssh</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#history_u76F8_u5173"><span class="nav-number">4.</span> <span class="nav-text">history相关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u7CFB_u7EDF_u4EFB_u52A1_u7BA1_u7406"><span class="nav-number">5.</span> <span class="nav-text">系统任务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rsync"><span class="nav-number">5.1.</span> <span class="nav-text">rsync</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iptables"><span class="nav-number">5.2.</span> <span class="nav-text">iptables</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u7CFB_u7EDF_u6027_u80FD_u76D1_u63A7"><span class="nav-number">6.</span> <span class="nav-text">系统性能监控</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u8F6F_u4EF6_u5B89_u88C5"><span class="nav-number">7.</span> <span class="nav-text">软件安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u989D_u5916_u7684_u6280_u5DE7"><span class="nav-number">8.</span> <span class="nav-text">额外的技巧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u57FA_u7840_u77E5_u8BC6_u8865_u5145_u8BF4_u660E"><span class="nav-number">9.</span> <span class="nav-text">基础知识补充说明</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rambo</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"rambone"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	  <script type="text/javascript">
+  		var duoshuo_user_ID = 2028992
+  	  </script>
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

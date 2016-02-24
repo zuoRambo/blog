@@ -1,0 +1,805 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="工作以来的尝试和感想" />
+
+
+
+  <meta name="keywords" content="go," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="2016年go发布了1.6RC同时还带来了《go语言圣经》，地位等同于《the c programming language》，还有什么理由不去学习呢，书中还有不少习题，详细读后会对这门新兴语言了解更多。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《the go programming language》学习笔记">
+<meta property="og:url" content="http://rambone.me/2016/02/15/tgpl/index.html">
+<meta property="og:site_name" content="Web开发实践手札">
+<meta property="og:description" content="2016年go发布了1.6RC同时还带来了《go语言圣经》，地位等同于《the c programming language》，还有什么理由不去学习呢，书中还有不少习题，详细读后会对这门新兴语言了解更多。">
+<meta property="og:updated_time" content="2016-02-24T02:37:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《the go programming language》学习笔记">
+<meta name="twitter:description" content="2016年go发布了1.6RC同时还带来了《go语言圣经》，地位等同于《the c programming language》，还有什么理由不去学习呢，书中还有不少习题，详细读后会对这门新兴语言了解更多。">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 《the go programming language》学习笔记 | Web开发实践手札 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Web开发实践手札</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            <i class="menu-item-icon icon-next-commonweal"></i> <br />
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              《the go programming language》学习笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-02-15T11:20:22+08:00" content="2016-02-15">
+            2016-02-15
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/技术-学习/" itemprop="url" rel="index">
+                  <span itemprop="name">技术 学习</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/02/15/tgpl/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/15/tgpl/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="u8BF4_u660E"><a href="#u8BF4_u660E" class="headerlink" title="说明"></a>说明</h3><ol>
+<li>《the go programming language》<a href="https://github.com/golang-china/gopl-zh" target="_blank" rel="external">中文版</a>，但是存在DMCA takedown问题，我猜测是版权问题，毕竟英文原版以及其他语言都已经交付出版社了。感谢<a href="http://docs.ruanjiadeng.com" target="_blank" rel="external">weaming</a>及时fork出来并搭建gitbook在线版本。</li>
+<li>可以使用在线的也可以搭建自己的学习环境 <a href="https://play.golang.org" target="_blank" rel="external">playground</a> <a href="https://tour.golang.org" target="_blank" rel="external">tour</a></li>
+</ol>
+<h3 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h3><ol>
+<li>语言基础包括变量、类型定义、包、文件、作用域等，复合类型有数组、字典、切片和动态列表。函数部分有错误处理、panic、recover及defer。</li>
+<li>go语言特有的方法、接口、并发、测试和反射。</li>
+<li>基于CSP的并发编程，goroutines channels</li>
+</ol>
+<h3 id="u7A0B_u5E8F_u7ED3_u6784"><a href="#u7A0B_u5E8F_u7ED3_u6784" class="headerlink" title="程序结构"></a>程序结构</h3><h4 id="u5185_u7F6E_u7684_u5E38_u91CF_uFF0C_u7C7B_u578B_u548C_u51FD_u6570"><a href="#u5185_u7F6E_u7684_u5E38_u91CF_uFF0C_u7C7B_u578B_u548C_u51FD_u6570" class="headerlink" title="内置的常量，类型和函数"></a>内置的常量，类型和函数</h4><p>下面罗列存在但是笔者不熟悉的</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">itoa <span class="constant">nil</span></span><br><span class="line"><span class="typename">uintptr</span> <span class="typename">rune</span> <span class="typename">complex128</span> <span class="typename">complex64</span></span><br><span class="line"><span class="built_in">make</span> <span class="built_in">cap</span> <span class="built_in">append</span> <span class="built_in">close</span> <span class="built_in">delete</span> <span class="built_in">complex</span> <span class="built_in">real</span> <span class="built_in">imag</span> <span class="built_in">panic</span> <span class="built_in">recover</span></span><br></pre></td></tr></table></figure>
+<p><strong>变量命名可以是htmlEscape HTMLEscape escapeHTML</strong>  但不应该是<strong>escapeHtml</strong></p>
+<h4 id="u53D8_u91CF"><a href="#u53D8_u91CF" class="headerlink" title="变量"></a>变量</h4><p><code>var 变量名字 类型 ＝ 表达式</code></p>
+<blockquote>
+<p>省略类型时可以通过值进行类型推导，省略值时可设置初始化零值</p>
+</blockquote>
+<p><code>变量 := 表达式</code></p>
+<blockquote>
+<p>简短变量声明语句中至少要声明一个新变量</p>
+<p>指针会创建别名，slice map chan 结构体 数组 接口等引用类型也会创建变量别名</p>
+</blockquote>
+<p><code>变量名 := new(T)</code></p>
+<blockquote>
+<p>创建一个T类型的匿名变量，初始化为T类型的零值，然后返回变量地址，返回的指针类型为<strong><code>*T</code></strong></p>
+<p>new只是一个预定义的函数不是关键字</p>
+</blockquote>
+<h4 id="u8D4B_u503C"><a href="#u8D4B_u503C" class="headerlink" title="赋值"></a>赋值</h4><blockquote>
+<p><code>++</code> <code>--</code> 递增和递减是语句不是表达式</p>
+<p>元组赋值 <code>x, y = y, x</code> 右边表达式先求值，统一更新左边变量对应的值</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; v = m[key]  <span class="comment">//map查找，失败时返回零值</span></span><br><span class="line">&gt; v = x.(T)   <span class="comment">//type断言，失败时panic异常</span></span><br><span class="line">&gt; v = &lt;-ch    <span class="comment">//管道接收，失败时返回零值</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>赋值时左右类型需匹配，进行比较时也需要存在可赋值性 slice map和chan的元素有隐式赋值行为</p>
+</blockquote>
+<h4 id="u7C7B_u578B"><a href="#u7C7B_u578B" class="headerlink" title="类型"></a>类型</h4><blockquote>
+<p><code>type 类型名字 底层类型</code></p>
+<p>类型声明语言一般出现在包一级，如果新创建的类型名字的首字母大写则外部包也可用</p>
+<p>类型转换 <code>T(x)</code> 底层基础类型相同或者指向相同底层结构的指针类型才可以转型 T是指针需要小括号<code>(*int)(x)</code>  </p>
+<p>类型有方法集 参数出现在方法名前 </p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">func</span> (c Celsius) String() <span class="typename">string</span> &#123; <span class="keyword">return</span> fmt.Sprintf(<span class="string">"%g°C"</span>,c) &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="u5305"><a href="#u5305" class="headerlink" title="包"></a>包</h4><blockquote>
+<p>包声明前的注释是包注释，包含包的功能概要说明，说明较多回放到独立的doc.go中</p>
+<p>goimports gofmt工具可以删除不必要的依赖包</p>
+<p>包级变量的初始化是按照变量声明出现的顺序来的</p>
+<p>一个文件可以有多个init初始化函数，不能被调用，引用。在程序开始执行时按照声明顺序被自动调用</p>
+<p>包只会被初始化一次</p>
+<p>初始化的逻辑可以封装成匿名函数</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">var</span> pc [<span class="number">256</span>] <span class="typename">byte</span> = <span class="keyword">func</span>() (pc [<span class="number">256</span>] <span class="typename">byte</span>) &#123;</span><br><span class="line">&gt; 	<span class="keyword">for</span> i := <span class="keyword">range</span> pc &#123; <span class="comment">// 省略值 只使用索引</span></span><br><span class="line">&gt; 		pc[i] = pc[i/<span class="number">2</span>] + <span class="typename">byte</span>(i&amp;<span class="number">1</span>)</span><br><span class="line">&gt;  &#125; </span><br><span class="line">&gt; &#125;()</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="u57FA_u7840_u6570_u636E_u7C7B_u578B_28_u6570_u5B57__u5B57_u7B26_u4E32__u5E03_u5C14_u578B_29"><a href="#u57FA_u7840_u6570_u636E_u7C7B_u578B_28_u6570_u5B57__u5B57_u7B26_u4E32__u5E03_u5C14_u578B_29" class="headerlink" title="基础数据类型(数字 字符串 布尔型)"></a>基础数据类型(数字 字符串 布尔型)</h3><ol>
+<li>unicode字符rune类型是和int32等价的类型，byte是uint8的等价类型，uintptr是一种无符号的整数类型，没有指定具体的bit大小却足以容纳指针</li>
+<li><code>%</code>仅用于整数间取模，结果符号与被取模数符号一致</li>
+<li><code>/</code>整数除法会向着0方向截断余数</li>
+<li>对于整数，<code>+x</code>是0+x的简写，<code>-x</code>是0-x的简写；对于浮点数和复数，<code>+x</code>就是x<code>－x</code>是x的负数</li>
+<li>位操作运算符</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&amp; <span class="comment">//AND</span></span><br><span class="line">| <span class="comment">// OR</span></span><br><span class="line">^ <span class="comment">// XOR</span></span><br><span class="line">&amp;^ <span class="comment">//AND NOT(位清空)</span></span><br><span class="line">&lt;&lt; <span class="comment">//左移</span></span><br><span class="line">&gt;&gt; <span class="comment">//右移</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>任何大小的整数字面值都可以使用以0开始的八进制格式或者以0x开始的十六进制格式</li>
+<li><code>ascii := &#39;a&#39;</code>一对单引号直接包含对应字符</li>
+<li>complex64 complex128 就是复数类型。内置的complex函数用于构建复数，real imag函数分别返回复数的实部和虚部</li>
+<li>常量的值在编译期间确定，常量间的算术运算、逻辑运算、比较运算、类型转换结果都是常量 即使<code>len</code> <code>cap</code> <code>imag</code> <code>complex</code> <code>unsafe.Sizeof</code>调用也是返回常量</li>
+<li>无类型的常量可以提供高运算精度，且可直接用于更多表达式而不需要显式转换</li>
+<li>字符串是一个不可改变的字节序列，<code>==</code> <code>&lt;=</code> 的比较是逐字节比较的</li>
+<li>原生字符串</li>
+<li>string接受到[]rune的类型转换，可将一个UTF8编码的字符串解码为Unicode字符序列</li>
+<li><code>byte.buffer</code> 用于字节slice的缓存，可动态变化</li>
+<li>字符串和字节slice相互转换<code>s := &quot;abc&quot;  b := []byte(s)  s2 := string(b)</code></li>
+<li>字符串和数字转换  <code>fmt.Sprintf</code>返回格式化字符串，或者 <code>strcov.Itoa</code></li>
+<li>使用<code>fmt.Scanf</code>解析输入的字符串和数字<br>4 ^&amp; 5</li>
+</ol>
+<h3 id="u590D_u6742_u6570_u636E_u7C7B_u578B"><a href="#u590D_u6742_u6570_u636E_u7C7B_u578B" class="headerlink" title="复杂数据类型"></a>复杂数据类型</h3><p>(数组 结构体 slice map)前两者是有固定内存大小的数据结构，后两者动态数据结构按需动态增长</p>
+<ol>
+<li>数组在默认情况下会被初始化为元素类型对应的零值 <code>q := [...]int{1, 2, 3}</code>数组长度由初始化值的个数来计算。</li>
+<li>初始化索引的顺序无关紧要，可以省略，未指定初始值的元素使用零值初始化</li>
+<li><code>crypto/sha256</code>包的Sum256可以对任意字节的slice类型数据生成一个对应的消息摘要。</li>
+<li>一个slice由三部分组成：指针、长度和容量，<code>len</code> <code>cap</code> 分别返回slice的长度和容量</li>
+<li><code>s[i:j]</code>返回长度为j-i的slice，cap是cap(s)-i</li>
+<li><code>s := []int{0,1,2,3,4,5}</code>不同于数组，slice没指定序列长度，会隐式创建一个合适大小的数组</li>
+<li><code>slice</code>不能使用<strong>==</strong>来判断相等，bytes.Equal提供了字节型slice的比较。<code>if s == nil</code>一个零值的slice等于nil，一个nil值的slice没有底层数组且长度和容量都是0。例如<code>var s []int</code> <code>s = []int(nil)</code></li>
+<li><code>make</code>用于创建一个指定元素类型、长度和容量的slice，<code>append</code>用于向slice追加元素</li>
+<li><code>map</code>是无序的key/value集合，<code>ages := make(map[string]int)</code>,map中的元素不是变量，不能取地址操作</li>
+<li><code>map</code> 的value的类型可以是聚合的，例如map或slice</li>
+<li>结构体变量的成员也是变量，成员名字的首字母大写的表示是导出的</li>
+<li>一个命名为S的结构体类型不能再包含S类型的成员但是可以是<code>*S</code>指针类型的成员</li>
+<li>结构体面值<code>type Point struct{X, Y int}</code>，有匿名成员</li>
+<li>结构体类型可以用<strong>==</strong>进行比较，还可以作为map的key</li>
+<li><code>json.Marshal</code>函数将类结构体slice转为json（叫做编组），<code>json.MarshalIndent(movies,&quot;&quot;,&quot;   &quot;)</code>输出便于阅读的格式（两参数代表每行输出前缀和每层缩进）</li>
+<li>下面的代码片段先new并返回一个模版在注册自定义函数最后分析模版</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">report, err := template.New(<span class="string">"report"</span>).</span><br><span class="line">    Funcs(template.FuncMap&#123;<span class="string">"daysAgo"</span>: daysAgo&#125;).</span><br><span class="line">    Parse(templ)</span><br></pre></td></tr></table></figure>
+<h3 id="u5F15_u7528_u7C7B_u578B"><a href="#u5F15_u7528_u7C7B_u578B" class="headerlink" title="引用类型"></a>引用类型</h3><p>(指针 切片 字典 函数 通道)</p>
+<ol>
+<li><code>func Sin(x float64) float</code> 没有函数体的函数声明，表示不是用go实现的</li>
+<li>go语言的垃圾回收机制不会处理操作系统层面的资源，例如打开的文件网络链接等，需要手动显式处理</li>
+<li>按照惯例，函数的最后一个bool类型的返回值表示函数是否成功，error表示对应的错误</li>
+<li><code>bare return</code> 省略的一种写法，返回和返回值列表次序一致</li>
+<li>错误处理：<code>log.Fatalf(&quot;site is down %v\n, err)</code>相当于<code>fmt.Fprintf(os.Stderr,&quot;site is down %v\n, err) os.Exit(1)</code></li>
+<li>函数类型的零值是nil</li>
+<li>defer可以在一个函数中被执行多次，顺序与声明顺序相反。常用于处理成对的操作，打开、关闭、连接、断开、加锁、释放锁等。<code>defer resp.Body.Close()</code> <code>defer f.Close()</code> <code>defer mu.Unlock()</code></li>
+<li>defer语句中的函数会在return语句更新返回值变量后执行也就是在函数执行完执行，其中定义的匿名函数可以访问该函数包括返回值在内的所有变量。<strong>可以自如修改返回值</strong></li>
+<li>panic异常，可以通过直接调用内置panic函数的方式引发</li>
+<li>在go的panic机制中，延迟函数的调用在释放堆栈信息之前</li>
+<li>recover可以从panic中恢复，被建议的做法是，判断panic类型选择性recover</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// for循环中生成的所有函数都共享相同的循环变量</span></span><br><span class="line"><span class="keyword">for</span> _, i := <span class="keyword">range</span> ranges&#123;</span><br><span class="line">	i := i</span><br><span class="line">	<span class="built_in">append</span>(funcs, <span class="keyword">func</span>() &#123;</span><br><span class="line">		doFunc(i)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可变参数</span></span><br><span class="line"><span class="keyword">func</span> sum(vals ...<span class="typename">int</span>) &#123;</span><br><span class="line">	total := <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> _, val := <span class="keyword">range</span> vals &#123;</span><br><span class="line">		total += val</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> total</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 对应的函数调用</span></span><br><span class="line">fmt.Println(sum(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line">values := []<span class="typename">int</span>&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;</span><br><span class="line">fmt.Println(sum(values...))</span><br><span class="line"><span class="comment">// 可变或者省略参数就是一个slice</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// recover机制</span></span><br><span class="line"><span class="keyword">func</span> soleTitle(doc *html.Node) (title <span class="typename">string</span>, err error)&#123;</span><br><span class="line">	<span class="keyword">type</span> bailout <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line">	<span class="keyword">defer</span> <span class="keyword">func</span>() &#123;</span><br><span class="line">		<span class="keyword">switch</span> p := <span class="built_in">recover</span>(); p &#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="constant">nil</span>:</span><br><span class="line">			<span class="keyword">case</span> bailout&#123;&#125;:</span><br><span class="line">				err := fmt.Errorf(<span class="string">"multiple title elements"</span>)</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">				<span class="built_in">panic</span>(p)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u63A5_u53E3_u7C7B_u578B"><a href="#u63A5_u53E3_u7C7B_u578B" class="headerlink" title="接口类型"></a>接口类型</h3><p>()</p>
+<h3 id="u4EE3_u7801_u7247_u6BB5_uFF08_u5C0F_u6280_u5DE7_uFF09"><a href="#u4EE3_u7801_u7247_u6BB5_uFF08_u5C0F_u6280_u5DE7_uFF09" class="headerlink" title="代码片段（小技巧）"></a>代码片段（小技巧）</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"strings"</span></span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"os"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> main() &#123;</span><br><span class="line">    fmt.Println(strings.Join(os.Args[:],<span class="string">" "</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i,arg := <span class="keyword">range</span> os.Args[:] &#123;</span><br><span class="line">        fmt.Prinln(i,<span class="string">" "</span>,arg)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"io/ioutil"</span></span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">	<span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> main() &#123;</span><br><span class="line">	counts := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="typename">string</span>]<span class="typename">int</span>)</span><br><span class="line">	</span><br><span class="line">	fo _, filename := <span class="keyword">range</span> os.Args[<span class="number">1</span>:] &#123;</span><br><span class="line">		data, err := ioutil.ReadFile(filename)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="constant">nil</span> &#123;</span><br><span class="line">			fmt.Fprintf(os.Stderr,<span class="string">"dup: %v\n"</span>, err)</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> _, line := <span class="keyword">range</span> strings.Split(<span class="typename">string</span>(data),<span class="string">"\n"</span>) &#123;</span><br><span class="line">			counts[line] ++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> line, n := <span class="keyword">range</span> counts &#123;</span><br><span class="line">		<span class="keyword">if</span> n &gt; <span class="number">1</span> &#123;</span><br><span class="line">			fmt.Printf(<span class="string">"%d\t%s\n"</span>, n, line)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">o := <span class="number">0666</span></span><br><span class="line">fmt.Printf(<span class="string">"%d %[1]o %#[1]o\n"</span>,o)</span><br><span class="line"><span class="comment">/*</span><br><span class="line">%之后的[1]副词告诉Printf函数再次使用第一个操作数</span><br><span class="line">%后的#副词告诉Printf在用%o、%x或%X输出时生成0、0x或0X前缀。</span><br><span class="line">*/</span></span><br><span class="line"></span><br><span class="line">fmt.Printf(<span class="string">"%*s&lt;%s&gt;\n"</span>, depth*<span class="number">2</span>, <span class="string">""</span>, n.Data)</span><br><span class="line"><span class="comment">// 输出depth*2数量的空格</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数的多返回值，Errorf返回也是error类型</span></span><br><span class="line"><span class="keyword">return</span> <span class="constant">nil</span>, fmt.Errorf(<span class="string">"getting %s %s"</span>,url, resp.status)</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//常数阶O(1),对数阶O(log2n),线性阶O(n), 线性对数阶O(nlog2n),平方阶O(n^2)，立方阶O(n^3),...， k次方阶O(n^k),指数阶O(2^n)</span></span><br></pre></td></tr></table></figure>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/go/" rel="tag">#go</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/22/linux-hacks/" rel="next">linux-hacks（奇技淫巧）</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2016/02/15/tgpl/"
+                   data-title="《the go programming language》学习笔记" data-url="http://rambone.me/2016/02/15/tgpl/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars1.githubusercontent.com/u/4715122?v=3&s=460" alt="Rambo" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Rambo</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">工作以来的尝试和感想</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zuoRambo" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/rambone" target="_blank">微博</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/Rambone" target="_blank">豆瓣</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/Rambone" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://about.me/rambone" target="_blank">aboutme</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u8BF4_u660E"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u6982_u8FF0"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u7A0B_u5E8F_u7ED3_u6784"><span class="nav-number">3.</span> <span class="nav-text">程序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u5185_u7F6E_u7684_u5E38_u91CF_uFF0C_u7C7B_u578B_u548C_u51FD_u6570"><span class="nav-number">3.1.</span> <span class="nav-text">内置的常量，类型和函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u53D8_u91CF"><span class="nav-number">3.2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u8D4B_u503C"><span class="nav-number">3.3.</span> <span class="nav-text">赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u7C7B_u578B"><span class="nav-number">3.4.</span> <span class="nav-text">类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5305"><span class="nav-number">3.5.</span> <span class="nav-text">包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u57FA_u7840_u6570_u636E_u7C7B_u578B_28_u6570_u5B57__u5B57_u7B26_u4E32__u5E03_u5C14_u578B_29"><span class="nav-number">4.</span> <span class="nav-text">基础数据类型(数字 字符串 布尔型)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u590D_u6742_u6570_u636E_u7C7B_u578B"><span class="nav-number">5.</span> <span class="nav-text">复杂数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5F15_u7528_u7C7B_u578B"><span class="nav-number">6.</span> <span class="nav-text">引用类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u63A5_u53E3_u7C7B_u578B"><span class="nav-number">7.</span> <span class="nav-text">接口类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4EE3_u7801_u7247_u6BB5_uFF08_u5C0F_u6280_u5DE7_uFF09"><span class="nav-number">8.</span> <span class="nav-text">代码片段（小技巧）</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rambo</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"rambone"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	  <script type="text/javascript">
+  		var duoshuo_user_ID = 2028992
+  	  </script>
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
