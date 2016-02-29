@@ -43,7 +43,7 @@
 <meta property="og:url" content="http://rambone.me/2016/01/22/linux-hacks/index.html">
 <meta property="og:site_name" content="Web开发实践手札">
 <meta property="og:description" content="小皮在群里发了一个网址，https://wrfly.gitbooks.io/linux-101-hacks/content/index.html,里面介绍了一些Linux bash的技巧。">
-<meta property="og:updated_time" content="2016-02-24T02:34:42.000Z">
+<meta property="og:updated_time" content="2016-02-25T11:06:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux-hacks（奇技淫巧）">
 <meta name="twitter:description" content="小皮在群里发了一个网址，https://wrfly.gitbooks.io/linux-101-hacks/content/index.html,里面介绍了一些Linux bash的技巧。">
@@ -288,8 +288,9 @@
 <ol>
 <li><code>sed &#39;s/REGEXP/REPLACEMENT/FLAGS&#39; file_name</code></li>
 <li><code>sed &#39;s/women/us/2 file_name&#39;</code> 把第二个women换成us</li>
-<li>``</li>
-<li>``</li>
+<li><code>sed -n &#39;/ruby/p&#39; file_name</code> 输出含有ruby的行</li>
+<li><code>sed &#39;1,$d&#39; file_name</code> 删除第一行到最后一行</li>
+<li>sed -i ‘/匹配字符串/s/替换源字符串/替换目标字符串/g’ filename</li>
 </ol>
 <h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><ol>
 <li><code>awk &#39;/search_pattern/ { action } /search_pattern/ { action }&#39; file_name</code></li>
@@ -457,7 +458,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -471,7 +472,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

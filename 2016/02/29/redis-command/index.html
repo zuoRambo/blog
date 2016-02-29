@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="javascript," />
+  <meta name="keywords" content="redis," />
 
 
 
@@ -37,16 +37,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="ES6标准已经出炉,各大语言分支,浏览器开始表示不同程度的支持,阮一峰老师更是出了一份学习说明,咱们也不能落下">
+<meta name="description" content="redis作为键值型内存“数据库”，其高效性、易用性的特点已经吸引很多开发去使用、部署，常见的场景就是作为缓存系统。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="es6初探">
-<meta property="og:url" content="http://rambone.me/2015/09/21/es6/index.html">
+<meta property="og:title" content="redis常用数据类型和命令">
+<meta property="og:url" content="http://rambone.me/2016/02/29/redis-command/index.html">
 <meta property="og:site_name" content="Web开发实践手札">
-<meta property="og:description" content="ES6标准已经出炉,各大语言分支,浏览器开始表示不同程度的支持,阮一峰老师更是出了一份学习说明,咱们也不能落下">
-<meta property="og:updated_time" content="2015-11-17T10:17:54.000Z">
+<meta property="og:description" content="redis作为键值型内存“数据库”，其高效性、易用性的特点已经吸引很多开发去使用、部署，常见的场景就是作为缓存系统。">
+<meta property="og:updated_time" content="2016-02-29T03:57:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="es6初探">
-<meta name="twitter:description" content="ES6标准已经出炉,各大语言分支,浏览器开始表示不同程度的支持,阮一峰老师更是出了一份学习说明,咱们也不能落下">
+<meta name="twitter:title" content="redis常用数据类型和命令">
+<meta name="twitter:description" content="redis作为键值型内存“数据库”，其高效性、易用性的特点已经吸引很多开发去使用、部署，常见的场景就是作为缓存系统。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -56,7 +56,7 @@
   };
 </script>
 
-  <title> es6初探 | Web开发实践手札 </title>
+  <title> redis常用数据类型和命令 | Web开发实践手札 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -179,7 +179,7 @@
           
           
             
-              es6初探
+              redis常用数据类型和命令
             
           
         </h1>
@@ -188,8 +188,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-09-21T11:31:02+08:00" content="2015-09-21">
-            2015-09-21
+          <time itemprop="dateCreated" datetime="2016-02-29T11:13:11+08:00" content="2016-02-29">
+            2016-02-29
           </time>
         </span>
 
@@ -214,8 +214,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/09/21/es6/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/21/es6/" itemprop="commentsCount"></span>
+              <a href="/2016/02/29/redis-command/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/29/redis-command/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -229,9 +229,9 @@
       
 
       
-        <span itemprop="articleBody"><blockquote>
-<p>学习的资料来源主要是InfoQ的译文以及阮一峰的博客</p>
-</blockquote>
+        <span itemprop="articleBody"><h1 id="u65E5_u5E38_u4F7F_u7528_u7BC7"><a href="#u65E5_u5E38_u4F7F_u7528_u7BC7" class="headerlink" title="日常使用篇"></a>日常使用篇</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 最基本的设置命令</span></span><br><span class="line"><span class="built_in">set</span> connection <span class="number">10</span></span><br><span class="line"><span class="comment"># 原子地递增一个数值</span></span><br><span class="line">INCR connection</span><br><span class="line"><span class="comment"># 删除一条记录</span></span><br><span class="line">DEL connection</span><br><span class="line"><span class="comment"># 获取键对应的值</span></span><br><span class="line">get connection</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看剩余过期时间(-2表示该记录不存在)</span></span><br><span class="line">ttl connection</span><br><span class="line"><span class="comment"># 设置过期时间(默认为-1,表示永不过期)</span></span><br><span class="line">EXPIRE connection <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># LIST列表 有序集合</span></span><br><span class="line"><span class="comment"># 从右边入栈</span></span><br><span class="line">RPUSH friends <span class="string">"sevenlx"</span></span><br><span class="line">RPUSH friends <span class="string">"rambone"</span></span><br><span class="line">RPUSH friends <span class="string">"mo2zie"</span></span><br><span class="line"><span class="comment"># 查看元素个数(列表长度)</span></span><br><span class="line">LLEN friends</span><br><span class="line"><span class="comment"># 获取子列表，0 -1表示首尾元素，取所有</span></span><br><span class="line">LRANGE friends <span class="number">0</span> -<span class="number">1</span></span><br><span class="line">LRANGE friends <span class="number">1</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 内容可重复</span></span><br><span class="line"><span class="comment"># 从左边出</span></span><br><span class="line">LPOP friends</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># SET集合，无序且唯一 </span></span><br><span class="line"><span class="comment"># 添加</span></span><br><span class="line">sadd language <span class="string">"php"</span></span><br><span class="line">sadd language <span class="string">"golang"</span></span><br><span class="line"><span class="comment"># 查看所有成员</span></span><br><span class="line">SMEMBERS language</span><br><span class="line">sadd language <span class="string">"js"</span></span><br><span class="line"><span class="comment"># 元素唯一</span></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line">SREM language <span class="string">"golang"</span></span><br><span class="line"></span><br><span class="line">SADD language <span class="string">"go"</span></span><br><span class="line">SMEMBERS language</span><br><span class="line"><span class="comment"># 判断存在于集合中</span></span><br><span class="line">SISMEMBER language <span class="string">"js'</span><br><span class="line">SISMEMBER language "</span>jsa<span class="string">"</span><br><span class="line"># SUNION 求两集合并集</span><br><span class="line"></span><br><span class="line"># Sorted Sets有序集合</span><br><span class="line">ZADD hackers 1940 "</span>Alan Kay<span class="string">"</span><br><span class="line">ZADD hackers 1906 "</span>Grace Hopper<span class="string">"</span><br><span class="line"></span><br><span class="line">ZRANGE hackers 0 -1</span><br><span class="line">DEL hackers</span><br><span class="line"></span><br><span class="line"># Hashes 映射，表示对象的最佳数据类型</span><br><span class="line"># 逐项设置</span><br><span class="line">hset user:1000 name "</span>rambone<span class="string">"</span><br><span class="line">hset user:1000 email "</span>rambone@gmail.com<span class="string">"</span><br><span class="line">hset user:1000 password "</span>password<span class="string">"</span><br><span class="line"># 获取所有属性|单独属性</span><br><span class="line">HGETALL user:1000</span><br><span class="line">HGET user:1000 name</span><br><span class="line"></span><br><span class="line"># 一次性设置</span><br><span class="line">HMSET user:1001 name "</span>mo2zie<span class="string">" email "</span>mo2zie@qq.com<span class="string">" password "</span>hello<span class="string">"</span></span><br></pre></td></tr></table></figure>
+<h1 id="u5B89_u5168_u914D_u7F6E_u7BC7"><a href="#u5B89_u5168_u914D_u7F6E_u7BC7" class="headerlink" title="安全配置篇"></a>安全配置篇</h1><p><a href="http://blog.knownsec.com/2015/11/analysis-of-redis-unauthorized-of-expolit/" target="_blank" rel="external">redis空口令漏洞</a> 这篇博文详细介绍了漏洞产生的原因，如何利用以及如何修复。</p>
+<p>归纳而言就是，一般开发者使用了redis最基础的功能，没设置密码同时侦听了<em>0.0.0.0</em>，另外<strong>config</strong>等容易被hack的命令也没注解掉导致了被黑的灾难。</p>
 </span>
       
     </div>
@@ -240,7 +240,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/javascript/" rel="tag">#javascript</a>
+            <a href="/tags/redis/" rel="tag">#redis</a>
           
         </div>
       
@@ -249,13 +249,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/28/nginx/" rel="prev">nginx配置</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/22/php-skill/" rel="next">php-skill</a>
+              <a href="/2016/02/15/tgpl/" rel="next">《the go programming language》学习笔记</a>
             
           </div>
         </div>
@@ -280,8 +278,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/09/21/es6/"
-                   data-title="es6初探" data-url="http://rambone.me/2015/09/21/es6/">
+              <div class="ds-thread" data-thread-key="2016/02/29/redis-command/"
+                   data-title="redis常用数据类型和命令" data-url="http://rambone.me/2016/02/29/redis-command/">
               </div>
             
           </div>
@@ -392,7 +390,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u65E5_u5E38_u4F7F_u7528_u7BC7"><span class="nav-number">1.</span> <span class="nav-text">日常使用篇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5B89_u5168_u914D_u7F6E_u7BC7"><span class="nav-number">2.</span> <span class="nav-text">安全配置篇</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
