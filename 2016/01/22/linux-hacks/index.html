@@ -229,156 +229,156 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="CD__u76F8_u5173"><a href="#CD__u76F8_u5173" class="headerlink" title="CD 相关"></a>CD 相关</h1><ol>
-<li><code>CDPATH</code>变量的设置，可以作为所有目录前缀</li>
-<li><code>$OLDPWD</code>上一层目录</li>
-<li><code>dirs</code> <code>pushd</code> <code>popd</code> 可以操作目录栈</li>
-<li><code>cd -</code> 快速回到上一工作目录</li>
-<li><code>shopt</code> bash的配置项配置命令 <strong>Mac不支持</strong> </li>
+        <span itemprop="articleBody"><h1 id="CD__u76F8_u5173"><a href="#CD__u76F8_u5173" class="headerlink" title="CD &#x76F8;&#x5173;"></a>CD &#x76F8;&#x5173;</h1><ol>
+<li><code>CDPATH</code>&#x53D8;&#x91CF;&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x6240;&#x6709;&#x76EE;&#x5F55;&#x524D;&#x7F00;</li>
+<li><code>$OLDPWD</code>&#x4E0A;&#x4E00;&#x5C42;&#x76EE;&#x5F55;</li>
+<li><code>dirs</code> <code>pushd</code> <code>popd</code> &#x53EF;&#x4EE5;&#x64CD;&#x4F5C;&#x76EE;&#x5F55;&#x6808;</li>
+<li><code>cd -</code> &#x5FEB;&#x901F;&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;</li>
+<li><code>shopt</code> bash&#x7684;&#x914D;&#x7F6E;&#x9879;&#x914D;&#x7F6E;&#x547D;&#x4EE4; <strong>Mac&#x4E0D;&#x652F;&#x6301;</strong> </li>
 </ol>
-<h1 id="u57FA_u672C_u547D_u4EE4"><a href="#u57FA_u672C_u547D_u4EE4" class="headerlink" title="基本命令"></a>基本命令</h1><h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><ol>
-<li><code>grep</code>查找命令比较强大尤其是支持正则表达式</li>
-<li><code>-v</code> 反向查找，排除符合的</li>
-<li><code>-c</code> 显示匹配到的行数</li>
-<li><code>-i</code> 忽略大小写</li>
-<li><code>-r</code> 递归搜索</li>
-<li><code>-l</code> 只显示匹配的文件名</li>
-<li><code>-E</code> 扩展模式，后面接正则表达式</li>
-<li><code>-n</code> 显示行号</li>
-<li><code>grep &#39;^$&#39; file_name</code> 匹配空行</li>
-<li><code>grep &quot;^[0-9]\{1,5\}&quot; file_name</code> 99999以内的数字</li>
-<li><code>grep -i &quot;\bthe\b&quot; file_name</code> \b是单词边界  匹配含有the的</li>
-<li><code>grep -iw &quot;is&quot; file_name</code> 单词级别的匹配，“this”不会被匹配到</li>
-<li><code>-A n</code> <code>-B n</code> <code>-C n</code>把匹配到的地方前后周围的几行也打印出来，获取上下文环境</li>
+<h1 id="u57FA_u672C_u547D_u4EE4"><a href="#u57FA_u672C_u547D_u4EE4" class="headerlink" title="&#x57FA;&#x672C;&#x547D;&#x4EE4;"></a>&#x57FA;&#x672C;&#x547D;&#x4EE4;</h1><h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><ol>
+<li><code>grep</code>&#x67E5;&#x627E;&#x547D;&#x4EE4;&#x6BD4;&#x8F83;&#x5F3A;&#x5927;&#x5C24;&#x5176;&#x662F;&#x652F;&#x6301;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;</li>
+<li><code>-v</code> &#x53CD;&#x5411;&#x67E5;&#x627E;&#xFF0C;&#x6392;&#x9664;&#x7B26;&#x5408;&#x7684;</li>
+<li><code>-c</code> &#x663E;&#x793A;&#x5339;&#x914D;&#x5230;&#x7684;&#x884C;&#x6570;</li>
+<li><code>-i</code> &#x5FFD;&#x7565;&#x5927;&#x5C0F;&#x5199;</li>
+<li><code>-r</code> &#x9012;&#x5F52;&#x641C;&#x7D22;</li>
+<li><code>-l</code> &#x53EA;&#x663E;&#x793A;&#x5339;&#x914D;&#x7684;&#x6587;&#x4EF6;&#x540D;</li>
+<li><code>-E</code> &#x6269;&#x5C55;&#x6A21;&#x5F0F;&#xFF0C;&#x540E;&#x9762;&#x63A5;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;</li>
+<li><code>-n</code> &#x663E;&#x793A;&#x884C;&#x53F7;</li>
+<li><code>grep &apos;^$&apos; file_name</code> &#x5339;&#x914D;&#x7A7A;&#x884C;</li>
+<li><code>grep &quot;^[0-9]\{1,5\}&quot; file_name</code> 99999&#x4EE5;&#x5185;&#x7684;&#x6570;&#x5B57;</li>
+<li><code>grep -i &quot;\bthe\b&quot; file_name</code> \b&#x662F;&#x5355;&#x8BCD;&#x8FB9;&#x754C;  &#x5339;&#x914D;&#x542B;&#x6709;the&#x7684;</li>
+<li><code>grep -iw &quot;is&quot; file_name</code> &#x5355;&#x8BCD;&#x7EA7;&#x522B;&#x7684;&#x5339;&#x914D;&#xFF0C;&#x201C;this&#x201D;&#x4E0D;&#x4F1A;&#x88AB;&#x5339;&#x914D;&#x5230;</li>
+<li><code>-A n</code> <code>-B n</code> <code>-C n</code>&#x628A;&#x5339;&#x914D;&#x5230;&#x7684;&#x5730;&#x65B9;&#x524D;&#x540E;&#x5468;&#x56F4;&#x7684;&#x51E0;&#x884C;&#x4E5F;&#x6253;&#x5370;&#x51FA;&#x6765;&#xFF0C;&#x83B7;&#x53D6;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;</li>
 </ol>
 <h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><ol>
-<li><code>mdfind</code> 是OSX的命令，功能比较强大 效率也比较高，是spotlight文件查找的终端版本</li>
-<li><code>find . -name &#39;*.log&#39;</code> 查找log后缀的文件</li>
-<li><code>find . -type f -size +20</code> 查找20K以上的文件</li>
-<li><code>find . -mtime +60</code> 查找60天前修改的文件</li>
-<li><code>find / -type f -name *.log -size +100M -exec rm -rf {} \;</code> 查找并删除文件</li>
-<li>上面的命令等效于<code>find / -type f -name *.log -size +100M -delete</code></li>
-<li><code>find / -newer /etc/passwd</code> 查找更改时间比passwd更新的文件</li>
-<li><code>find -maxdepth 2 -name passwd</code> 类似于<code>du</code>可以设定查询目录深度</li>
-<li><code>find -perm 040 -type f</code> 查找执行条件满足查询的文件</li>
-<li><code>find ~ -type f -exec ls -s {} \; |sort -n -r |head -5</code> 查找最大的5个文件</li>
-<li><code>find / -type f -name *.zip -size +100M -exec rm -i {} \;</code> 查找并删除百兆以上的压缩包</li>
+<li><code>mdfind</code> &#x662F;OSX&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x529F;&#x80FD;&#x6BD4;&#x8F83;&#x5F3A;&#x5927; &#x6548;&#x7387;&#x4E5F;&#x6BD4;&#x8F83;&#x9AD8;&#xFF0C;&#x662F;spotlight&#x6587;&#x4EF6;&#x67E5;&#x627E;&#x7684;&#x7EC8;&#x7AEF;&#x7248;&#x672C;</li>
+<li><code>find . -name &apos;*.log&apos;</code> &#x67E5;&#x627E;log&#x540E;&#x7F00;&#x7684;&#x6587;&#x4EF6;</li>
+<li><code>find . -type f -size +20</code> &#x67E5;&#x627E;20K&#x4EE5;&#x4E0A;&#x7684;&#x6587;&#x4EF6;</li>
+<li><code>find . -mtime +60</code> &#x67E5;&#x627E;60&#x5929;&#x524D;&#x4FEE;&#x6539;&#x7684;&#x6587;&#x4EF6;</li>
+<li><code>find / -type f -name *.log -size +100M -exec rm -rf {} \;</code> &#x67E5;&#x627E;&#x5E76;&#x5220;&#x9664;&#x6587;&#x4EF6;</li>
+<li>&#x4E0A;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x7B49;&#x6548;&#x4E8E;<code>find / -type f -name *.log -size +100M -delete</code></li>
+<li><code>find / -newer /etc/passwd</code> &#x67E5;&#x627E;&#x66F4;&#x6539;&#x65F6;&#x95F4;&#x6BD4;passwd&#x66F4;&#x65B0;&#x7684;&#x6587;&#x4EF6;</li>
+<li><code>find -maxdepth 2 -name passwd</code> &#x7C7B;&#x4F3C;&#x4E8E;<code>du</code>&#x53EF;&#x4EE5;&#x8BBE;&#x5B9A;&#x67E5;&#x8BE2;&#x76EE;&#x5F55;&#x6DF1;&#x5EA6;</li>
+<li><code>find -perm 040 -type f</code> &#x67E5;&#x627E;&#x6267;&#x884C;&#x6761;&#x4EF6;&#x6EE1;&#x8DB3;&#x67E5;&#x8BE2;&#x7684;&#x6587;&#x4EF6;</li>
+<li><code>find ~ -type f -exec ls -s {} \; |sort -n -r |head -5</code> &#x67E5;&#x627E;&#x6700;&#x5927;&#x7684;5&#x4E2A;&#x6587;&#x4EF6;</li>
+<li><code>find / -type f -name *.zip -size +100M -exec rm -i {} \;</code> &#x67E5;&#x627E;&#x5E76;&#x5220;&#x9664;&#x767E;&#x5146;&#x4EE5;&#x4E0A;&#x7684;&#x538B;&#x7F29;&#x5305;</li>
 </ol>
-<h2 id="u540E_u53F0_u8FD0_u884C_u7A0B_u5E8F"><a href="#u540E_u53F0_u8FD0_u884C_u7A0B_u5E8F" class="headerlink" title="后台运行程序"></a>后台运行程序</h2><ol>
+<h2 id="u540E_u53F0_u8FD0_u884C_u7A0B_u5E8F"><a href="#u540E_u53F0_u8FD0_u884C_u7A0B_u5E8F" class="headerlink" title="&#x540E;&#x53F0;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;"></a>&#x540E;&#x53F0;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;</h2><ol>
 <li><code>&amp;</code></li>
 <li><code>nohup bash_file &amp;&gt; /dev/null &amp;</code></li>
-<li><code>screen</code> <code>screen -S session_name -dm</code> 一开始就断开的session并自定义名字 <code>screen -ls</code>查看session <code>screen -r session_name</code>恢复session，可通过session_id <code>ctrl+a d</code>暂时断开 <code>ctrl+a w</code>列出window <code>ctrl+a A</code>命名 <code>ctrl+a k</code>杀掉 <code>ctrl+a c</code>创建</li>
+<li><code>screen</code> <code>screen -S session_name -dm</code> &#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x65AD;&#x5F00;&#x7684;session&#x5E76;&#x81EA;&#x5B9A;&#x4E49;&#x540D;&#x5B57; <code>screen -ls</code>&#x67E5;&#x770B;session <code>screen -r session_name</code>&#x6062;&#x590D;session&#xFF0C;&#x53EF;&#x901A;&#x8FC7;session_id <code>ctrl+a d</code>&#x6682;&#x65F6;&#x65AD;&#x5F00; <code>ctrl+a w</code>&#x5217;&#x51FA;window <code>ctrl+a A</code>&#x547D;&#x540D; <code>ctrl+a k</code>&#x6740;&#x6389; <code>ctrl+a c</code>&#x521B;&#x5EFA;</li>
 <li><code>tmux</code></li>
-<li><code>at -f bash_file 10 am tomorrow</code> <code>atq</code>查看队列 <code>atrm</code> <code>at -d</code>删除计划任务</li>
+<li><code>at -f bash_file 10 am tomorrow</code> <code>atq</code>&#x67E5;&#x770B;&#x961F;&#x5217; <code>atrm</code> <code>at -d</code>&#x5220;&#x9664;&#x8BA1;&#x5212;&#x4EFB;&#x52A1;</li>
 <li><code>watch -n 5 command</code></li>
 </ol>
-<h2 id="wget_u4E0B_u8F7D_u529F_u80FD"><a href="#wget_u4E0B_u8F7D_u529F_u80FD" class="headerlink" title="wget下载功能"></a>wget下载功能</h2><ol>
+<h2 id="wget_u4E0B_u8F7D_u529F_u80FD"><a href="#wget_u4E0B_u8F7D_u529F_u80FD" class="headerlink" title="wget&#x4E0B;&#x8F7D;&#x529F;&#x80FD;"></a>wget&#x4E0B;&#x8F7D;&#x529F;&#x80FD;</h2><ol>
 <li><code>wget -0 file_save_name http://my_host.com</code></li>
 <li><code>wget --limit-rate=200k http://my_host.com</code></li>
-<li><code>wget -c http://my_host.com</code> 断点续传</li>
-<li><code>wget -b -o download_log_file http://my_host.com</code> 后台下载</li>
-<li><code>wget --spider --user-agent=&#39;spider&#39;</code> 指定UA并检查文件并不下载</li>
-<li><code>wget --tries=7 http://my_host.com</code> 重试次数</li>
-<li><code>wget --mirror -p --convert-links -P ./local_directory</code> 复制整站并转换链接为relative</li>
-<li><code>wget -r -reject=gif -i -Q5m http://my_host.com</code> 递归下载不下动图大于5M就quit</li>
+<li><code>wget -c http://my_host.com</code> &#x65AD;&#x70B9;&#x7EED;&#x4F20;</li>
+<li><code>wget -b -o download_log_file http://my_host.com</code> &#x540E;&#x53F0;&#x4E0B;&#x8F7D;</li>
+<li><code>wget --spider --user-agent=&apos;spider&apos;</code> &#x6307;&#x5B9A;UA&#x5E76;&#x68C0;&#x67E5;&#x6587;&#x4EF6;&#x5E76;&#x4E0D;&#x4E0B;&#x8F7D;</li>
+<li><code>wget --tries=7 http://my_host.com</code> &#x91CD;&#x8BD5;&#x6B21;&#x6570;</li>
+<li><code>wget --mirror -p --convert-links -P ./local_directory</code> &#x590D;&#x5236;&#x6574;&#x7AD9;&#x5E76;&#x8F6C;&#x6362;&#x94FE;&#x63A5;&#x4E3A;relative</li>
+<li><code>wget -r -reject=gif -i -Q5m http://my_host.com</code> &#x9012;&#x5F52;&#x4E0B;&#x8F7D;&#x4E0D;&#x4E0B;&#x52A8;&#x56FE;&#x5927;&#x4E8E;5M&#x5C31;quit</li>
 </ol>
 <h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><blockquote>
-<p>sed 和 awk都应该着重介绍，sed内容比较庞大，已经作为一门“语言”</p>
+<p>sed &#x548C; awk&#x90FD;&#x5E94;&#x8BE5;&#x7740;&#x91CD;&#x4ECB;&#x7ECD;&#xFF0C;sed&#x5185;&#x5BB9;&#x6BD4;&#x8F83;&#x5E9E;&#x5927;&#xFF0C;&#x5DF2;&#x7ECF;&#x4F5C;&#x4E3A;&#x4E00;&#x95E8;&#x201C;&#x8BED;&#x8A00;&#x201D;</p>
 </blockquote>
 <ol>
-<li><code>sed &#39;s/REGEXP/REPLACEMENT/FLAGS&#39; file_name</code></li>
-<li><code>sed &#39;s/women/us/2 file_name&#39;</code> 把第二个women换成us</li>
-<li><code>sed -n &#39;/ruby/p&#39; file_name</code> 输出含有ruby的行</li>
-<li><code>sed &#39;1,$d&#39; file_name</code> 删除第一行到最后一行</li>
-<li>sed -i ‘/匹配字符串/s/替换源字符串/替换目标字符串/g’ filename</li>
+<li><code>sed &apos;s/REGEXP/REPLACEMENT/FLAGS&apos; file_name</code></li>
+<li><code>sed &apos;s/women/us/2 file_name&apos;</code> &#x628A;&#x7B2C;&#x4E8C;&#x4E2A;women&#x6362;&#x6210;us</li>
+<li><code>sed -n &apos;/ruby/p&apos; file_name</code> &#x8F93;&#x51FA;&#x542B;&#x6709;ruby&#x7684;&#x884C;</li>
+<li><code>sed &apos;1,$d&apos; file_name</code> &#x5220;&#x9664;&#x7B2C;&#x4E00;&#x884C;&#x5230;&#x6700;&#x540E;&#x4E00;&#x884C;</li>
+<li>sed -i &#x2018;/&#x5339;&#x914D;&#x5B57;&#x7B26;&#x4E32;/s/&#x66FF;&#x6362;&#x6E90;&#x5B57;&#x7B26;&#x4E32;/&#x66FF;&#x6362;&#x76EE;&#x6807;&#x5B57;&#x7B26;&#x4E32;/g&#x2019; filename</li>
 </ol>
 <h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><ol>
-<li><code>awk &#39;/search_pattern/ { action } /search_pattern/ { action }&#39; file_name</code></li>
-<li><code>awk &#39;{print;}&#39; awk_file</code> 原封输出</li>
-<li><code>awk &#39;{print $2,$5}&#39; awk_file</code> 打印2 5字段</li>
-<li><code>awk &#39;$1 &gt; 200&#39; awk_file</code> 逻辑表达式</li>
-<li><code>awk &#39;$4 ~ /[aA][a-z0-9]/&#39; awk_file</code> 正则匹配</li>
-<li><code>netstat -an -p tcp|awk &#39;$1~/tcp4/{sum[$6]++} END{for (i in sum) printf &quot;%-10s %-6s %-3s \n&quot;, i,&quot; &quot;,sum[i]}&#39;</code>统计tcp不同链接状态的数量</li>
-<li><code>awk -F|-f|-v &#39;BEGIN{} //{command1; command2;} END{}&#39; file</code></li>
-<li><em>$0</em>:整行 <em>NF</em>:字段数量 <em>NR</em>:每行的记录号 <em>FNR</em>:多文件不递增的行记录数 <em>\t</em>:制表符 <em>FS</em>:BEGIN定义的分隔符 <em>~</em>:匹配 <em>-F’[:#/]’</em>:定义三个分隔符 <em>==</em>:完全匹配 <em>OFS</em>:输出字段分隔符</li>
+<li><code>awk &apos;/search_pattern/ { action } /search_pattern/ { action }&apos; file_name</code></li>
+<li><code>awk &apos;{print;}&apos; awk_file</code> &#x539F;&#x5C01;&#x8F93;&#x51FA;</li>
+<li><code>awk &apos;{print $2,$5}&apos; awk_file</code> &#x6253;&#x5370;2 5&#x5B57;&#x6BB5;</li>
+<li><code>awk &apos;$1 &gt; 200&apos; awk_file</code> &#x903B;&#x8F91;&#x8868;&#x8FBE;&#x5F0F;</li>
+<li><code>awk &apos;$4 ~ /[aA][a-z0-9]/&apos; awk_file</code> &#x6B63;&#x5219;&#x5339;&#x914D;</li>
+<li><code>netstat -an -p tcp|awk &apos;$1~/tcp4/{sum[$6]++} END{for (i in sum) printf &quot;%-10s %-6s %-3s \n&quot;, i,&quot; &quot;,sum[i]}&apos;</code>&#x7EDF;&#x8BA1;tcp&#x4E0D;&#x540C;&#x94FE;&#x63A5;&#x72B6;&#x6001;&#x7684;&#x6570;&#x91CF;</li>
+<li><code>awk -F|-f|-v &apos;BEGIN{} //{command1; command2;} END{}&apos; file</code></li>
+<li><em>$0</em>:&#x6574;&#x884C; <em>NF</em>:&#x5B57;&#x6BB5;&#x6570;&#x91CF; <em>NR</em>:&#x6BCF;&#x884C;&#x7684;&#x8BB0;&#x5F55;&#x53F7; <em>FNR</em>:&#x591A;&#x6587;&#x4EF6;&#x4E0D;&#x9012;&#x589E;&#x7684;&#x884C;&#x8BB0;&#x5F55;&#x6570; <em>\t</em>:&#x5236;&#x8868;&#x7B26; <em>FS</em>:BEGIN&#x5B9A;&#x4E49;&#x7684;&#x5206;&#x9694;&#x7B26; <em>~</em>:&#x5339;&#x914D; <em>-F&#x2019;[:#/]&#x2019;</em>:&#x5B9A;&#x4E49;&#x4E09;&#x4E2A;&#x5206;&#x9694;&#x7B26; <em>==</em>:&#x5B8C;&#x5168;&#x5339;&#x914D; <em>OFS</em>:&#x8F93;&#x51FA;&#x5B57;&#x6BB5;&#x5206;&#x9694;&#x7B26;</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEGIN &#123; Actions&#125;</span><br><span class="line">&#123;ACTION&#125; <span class="comment"># 文件中的每一行默认的动作</span></span><br><span class="line">END &#123; Actions &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEGIN { Actions}</span><br><span class="line">{ACTION} <span class="comment"># &#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x884C;&#x9ED8;&#x8BA4;&#x7684;&#x52A8;&#x4F5C;</span></span><br><span class="line">END { Actions }</span><br></pre></td></tr></table></figure>
 <h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><ol>
-<li><code>g``G``0``$</code> 光标移动 文首 文末 行首 行末</li>
-<li><code>%</code> 半闭合的括号间移动</li>
-<li><code>vim +10 /etc/passwd</code> 打开文件并定位到第十行</li>
+<li><code>g``G``0``$</code> &#x5149;&#x6807;&#x79FB;&#x52A8; &#x6587;&#x9996; &#x6587;&#x672B; &#x884C;&#x9996; &#x884C;&#x672B;</li>
+<li><code>%</code> &#x534A;&#x95ED;&#x5408;&#x7684;&#x62EC;&#x53F7;&#x95F4;&#x79FB;&#x52A8;</li>
+<li><code>vim +10 /etc/passwd</code> &#x6253;&#x5F00;&#x6587;&#x4EF6;&#x5E76;&#x5B9A;&#x4F4D;&#x5230;&#x7B2C;&#x5341;&#x884C;</li>
 </ol>
-<h2 id="u5176_u4ED6"><a href="#u5176_u4ED6" class="headerlink" title="其他"></a>其他</h2><ol>
-<li><code>join</code> 合并两个文件</li>
-<li><code>xargs</code> 将输出内容当作参数传给下一命令 <code>find / -name *.jpg -type f -print | xargs tar -cvzf images.tar.gz</code></li>
-<li><code>sort</code> 非常实用的命令，给文件内容以及屏幕输出等任何东西排序 <code>ls -alh |sort -nrk 5</code> 按照文件大小倒序</li>
-<li><code>uniq</code> 类似上面的sort命令 去重的</li>
-<li><code>stat</code> 查看文件属性</li>
-<li><code>cut</code> 切割数据，有点类似<code>awk</code> <code>sed</code>,用法<code>cut -d : -f 1,4 file_name</code>除了使用分隔符还可以按照字符分隔，<code>cut -d , -c 8 file_name</code>,另外<code>-f</code>参数可以使用<code>2-</code>表示2到末尾</li>
-<li><code>diff</code> 比较两个文件的不同还可以使用<code>vimdiff</code> <code>diff -u</code></li>
-<li><code>ac -d account_name</code> 查看登录使用时间</li>
-<li><code>less file_name</code> 查看大文件，<code>vim</code>式控制文件：<code>f``b</code>前后翻页 <code>g``G</code>文件首尾 <code>v</code>直接编辑 <code>&amp;parrtern</code>正则查找 <code>m</code>制作标记 <code>ctrl+g</code>显示光标位置 <code>F</code>截取文件流 <code>:e</code>打开另一个文件 也可以查看多个文件</li>
-<li><code>chmod u+x,g-rw file_name</code> 设置文件权限，<code>-R</code>递归处理，<strong><code>chmod --reference=file1 file2</code> 给文件2设置和1一样的权限</strong></li>
-<li><code>tail -f access.log -f error.log</code> 查看两个增长的文件，调试web的时候比较有用</li>
-<li><code>date --date=&#39;tomorrow&#39; +%s</code> 明天的unix时间戳</li>
-<li><code>zip -P your_password zip_file.zip files_name_or_pattern</code> 可以指定压缩比，设置密码</li>
-<li><code>unzip -t</code> <code>unzip -l</code> 解压测试或查看内部文件</li>
-<li><code>tar -czvf tar_file.tar.gz your_files</code> 压缩 <code>-j</code>换成bz2格式 <code>tar -xzvf tar_file.tar.gz</code> 解压</li>
+<h2 id="u5176_u4ED6"><a href="#u5176_u4ED6" class="headerlink" title="&#x5176;&#x4ED6;"></a>&#x5176;&#x4ED6;</h2><ol>
+<li><code>join</code> &#x5408;&#x5E76;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;</li>
+<li><code>xargs</code> &#x5C06;&#x8F93;&#x51FA;&#x5185;&#x5BB9;&#x5F53;&#x4F5C;&#x53C2;&#x6570;&#x4F20;&#x7ED9;&#x4E0B;&#x4E00;&#x547D;&#x4EE4; <code>find / -name *.jpg -type f -print | xargs tar -cvzf images.tar.gz</code></li>
+<li><code>sort</code> &#x975E;&#x5E38;&#x5B9E;&#x7528;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x7ED9;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x4EE5;&#x53CA;&#x5C4F;&#x5E55;&#x8F93;&#x51FA;&#x7B49;&#x4EFB;&#x4F55;&#x4E1C;&#x897F;&#x6392;&#x5E8F; <code>ls -alh |sort -nrk 5</code> &#x6309;&#x7167;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x5012;&#x5E8F;</li>
+<li><code>uniq</code> &#x7C7B;&#x4F3C;&#x4E0A;&#x9762;&#x7684;sort&#x547D;&#x4EE4; &#x53BB;&#x91CD;&#x7684;</li>
+<li><code>stat</code> &#x67E5;&#x770B;&#x6587;&#x4EF6;&#x5C5E;&#x6027;</li>
+<li><code>cut</code> &#x5207;&#x5272;&#x6570;&#x636E;&#xFF0C;&#x6709;&#x70B9;&#x7C7B;&#x4F3C;<code>awk</code> <code>sed</code>,&#x7528;&#x6CD5;<code>cut -d : -f 1,4 file_name</code>&#x9664;&#x4E86;&#x4F7F;&#x7528;&#x5206;&#x9694;&#x7B26;&#x8FD8;&#x53EF;&#x4EE5;&#x6309;&#x7167;&#x5B57;&#x7B26;&#x5206;&#x9694;&#xFF0C;<code>cut -d , -c 8 file_name</code>,&#x53E6;&#x5916;<code>-f</code>&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>2-</code>&#x8868;&#x793A;2&#x5230;&#x672B;&#x5C3E;</li>
+<li><code>diff</code> &#x6BD4;&#x8F83;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x4E0D;&#x540C;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>vimdiff</code> <code>diff -u</code></li>
+<li><code>ac -d account_name</code> &#x67E5;&#x770B;&#x767B;&#x5F55;&#x4F7F;&#x7528;&#x65F6;&#x95F4;</li>
+<li><code>less file_name</code> &#x67E5;&#x770B;&#x5927;&#x6587;&#x4EF6;&#xFF0C;<code>vim</code>&#x5F0F;&#x63A7;&#x5236;&#x6587;&#x4EF6;&#xFF1A;<code>f``b</code>&#x524D;&#x540E;&#x7FFB;&#x9875; <code>g``G</code>&#x6587;&#x4EF6;&#x9996;&#x5C3E; <code>v</code>&#x76F4;&#x63A5;&#x7F16;&#x8F91; <code>&amp;parrtern</code>&#x6B63;&#x5219;&#x67E5;&#x627E; <code>m</code>&#x5236;&#x4F5C;&#x6807;&#x8BB0; <code>ctrl+g</code>&#x663E;&#x793A;&#x5149;&#x6807;&#x4F4D;&#x7F6E; <code>F</code>&#x622A;&#x53D6;&#x6587;&#x4EF6;&#x6D41; <code>:e</code>&#x6253;&#x5F00;&#x53E6;&#x4E00;&#x4E2A;&#x6587;&#x4EF6; &#x4E5F;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x591A;&#x4E2A;&#x6587;&#x4EF6;</li>
+<li><code>chmod u+x,g-rw file_name</code> &#x8BBE;&#x7F6E;&#x6587;&#x4EF6;&#x6743;&#x9650;&#xFF0C;<code>-R</code>&#x9012;&#x5F52;&#x5904;&#x7406;&#xFF0C;<strong><code>chmod --reference=file1 file2</code> &#x7ED9;&#x6587;&#x4EF6;2&#x8BBE;&#x7F6E;&#x548C;1&#x4E00;&#x6837;&#x7684;&#x6743;&#x9650;</strong></li>
+<li><code>tail -f access.log -f error.log</code> &#x67E5;&#x770B;&#x4E24;&#x4E2A;&#x589E;&#x957F;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x8C03;&#x8BD5;web&#x7684;&#x65F6;&#x5019;&#x6BD4;&#x8F83;&#x6709;&#x7528;</li>
+<li><code>date --date=&apos;tomorrow&apos; +%s</code> &#x660E;&#x5929;&#x7684;unix&#x65F6;&#x95F4;&#x6233;</li>
+<li><code>zip -P your_password zip_file.zip files_name_or_pattern</code> &#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x538B;&#x7F29;&#x6BD4;&#xFF0C;&#x8BBE;&#x7F6E;&#x5BC6;&#x7801;</li>
+<li><code>unzip -t</code> <code>unzip -l</code> &#x89E3;&#x538B;&#x6D4B;&#x8BD5;&#x6216;&#x67E5;&#x770B;&#x5185;&#x90E8;&#x6587;&#x4EF6;</li>
+<li><code>tar -czvf tar_file.tar.gz your_files</code> &#x538B;&#x7F29; <code>-j</code>&#x6362;&#x6210;bz2&#x683C;&#x5F0F; <code>tar -xzvf tar_file.tar.gz</code> &#x89E3;&#x538B;</li>
 </ol>
 <h1 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h1><ol>
-<li>逃逸字符<code>~</code> 连接后<code>~^Z</code>可以将当前ssh置于后台，<code>jobs</code>可以进行查看并通过<code>fg</code>切换回来</li>
-<li><code>/etc/ssh/ssd_config</code>配置文件常见配置项目说明</li>
+<li>&#x9003;&#x9038;&#x5B57;&#x7B26;<code>~</code> &#x8FDE;&#x63A5;&#x540E;<code>~^Z</code>&#x53EF;&#x4EE5;&#x5C06;&#x5F53;&#x524D;ssh&#x7F6E;&#x4E8E;&#x540E;&#x53F0;&#xFF0C;<code>jobs</code>&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x67E5;&#x770B;&#x5E76;&#x901A;&#x8FC7;<code>fg</code>&#x5207;&#x6362;&#x56DE;&#x6765;</li>
+<li><code>/etc/ssh/ssd_config</code>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5E38;&#x89C1;&#x914D;&#x7F6E;&#x9879;&#x76EE;&#x8BF4;&#x660E;</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 禁止root用户登录</span></span><br><span class="line">PermitRootLogin no</span><br><span class="line"></span><br><span class="line">＃ 允许登录的用户／用户组</span><br><span class="line">AllowUsers root rambone</span><br><span class="line">AllowGroups root</span><br><span class="line"></span><br><span class="line"><span class="comment"># 禁止的用户／用户组</span></span><br><span class="line">DenyUsers root rambone</span><br><span class="line">DenyGrops root</span><br><span class="line"></span><br><span class="line"><span class="comment"># 登陆时限</span></span><br><span class="line">LoginGraceTime <span class="number">1</span>m</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不活动自动断开</span></span><br><span class="line">ClientAliveInterval <span class="number">600</span></span><br><span class="line">ClientAliveCountMax <span class="number">0</span> <span class="comment">#从不检查</span></span><br></pre></td></tr></table></figure>
-<h1 id="history_u76F8_u5173"><a href="#history_u76F8_u5173" class="headerlink" title="history相关"></a>history相关</h1><ol>
-<li><code>ctrl+a</code> <code>ctrl+e</code> <code>ctrl+k</code>删除至行尾 <code>ctrl+u</code> <code>ctrl+w</code>删除单个单词</li>
-<li><code>ctrl+r</code>搜索历史命令 <code>ctrl+l</code>清屏 <code>ctrl+s</code>阻止屏幕输出 <code>ctrl+q</code>允许屏幕输出 <code>ctrl+c</code> <code>ctrl+z</code>挂起</li>
-<li><code>!$</code>上一条命令最后参数 <code>!to:p</code>打印最近一次to的命令 <code>!N</code>上N条命令 <code>!*</code>上一条命令参数 <code>!^</code>上一条命令第一个参数</li>
-<li><code>export HISTCONTROL=ignoredups</code>相邻命令去重 <code>erasedups</code>历史命令去重 <code>export HISTIGNORE=&quot;pwd:ls:ls -ltr&quot;</code>忽略不记录某些命令</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x7981;&#x6B62;root&#x7528;&#x6237;&#x767B;&#x5F55;</span></span><br><span class="line">PermitRootLogin no</span><br><span class="line"></span><br><span class="line">&#xFF03; &#x5141;&#x8BB8;&#x767B;&#x5F55;&#x7684;&#x7528;&#x6237;&#xFF0F;&#x7528;&#x6237;&#x7EC4;</span><br><span class="line">AllowUsers root rambone</span><br><span class="line">AllowGroups root</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x7981;&#x6B62;&#x7684;&#x7528;&#x6237;&#xFF0F;&#x7528;&#x6237;&#x7EC4;</span></span><br><span class="line">DenyUsers root rambone</span><br><span class="line">DenyGrops root</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x767B;&#x9646;&#x65F6;&#x9650;</span></span><br><span class="line">LoginGraceTime <span class="number">1</span>m</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x4E0D;&#x6D3B;&#x52A8;&#x81EA;&#x52A8;&#x65AD;&#x5F00;</span></span><br><span class="line">ClientAliveInterval <span class="number">600</span></span><br><span class="line">ClientAliveCountMax <span class="number">0</span> <span class="comment">#&#x4ECE;&#x4E0D;&#x68C0;&#x67E5;</span></span><br></pre></td></tr></table></figure>
+<h1 id="history_u76F8_u5173"><a href="#history_u76F8_u5173" class="headerlink" title="history&#x76F8;&#x5173;"></a>history&#x76F8;&#x5173;</h1><ol>
+<li><code>ctrl+a</code> <code>ctrl+e</code> <code>ctrl+k</code>&#x5220;&#x9664;&#x81F3;&#x884C;&#x5C3E; <code>ctrl+u</code> <code>ctrl+w</code>&#x5220;&#x9664;&#x5355;&#x4E2A;&#x5355;&#x8BCD;</li>
+<li><code>ctrl+r</code>&#x641C;&#x7D22;&#x5386;&#x53F2;&#x547D;&#x4EE4; <code>ctrl+l</code>&#x6E05;&#x5C4F; <code>ctrl+s</code>&#x963B;&#x6B62;&#x5C4F;&#x5E55;&#x8F93;&#x51FA; <code>ctrl+q</code>&#x5141;&#x8BB8;&#x5C4F;&#x5E55;&#x8F93;&#x51FA; <code>ctrl+c</code> <code>ctrl+z</code>&#x6302;&#x8D77;</li>
+<li><code>!$</code>&#x4E0A;&#x4E00;&#x6761;&#x547D;&#x4EE4;&#x6700;&#x540E;&#x53C2;&#x6570; <code>!to:p</code>&#x6253;&#x5370;&#x6700;&#x8FD1;&#x4E00;&#x6B21;to&#x7684;&#x547D;&#x4EE4; <code>!N</code>&#x4E0A;N&#x6761;&#x547D;&#x4EE4; <code>!*</code>&#x4E0A;&#x4E00;&#x6761;&#x547D;&#x4EE4;&#x53C2;&#x6570; <code>!^</code>&#x4E0A;&#x4E00;&#x6761;&#x547D;&#x4EE4;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;</li>
+<li><code>export HISTCONTROL=ignoredups</code>&#x76F8;&#x90BB;&#x547D;&#x4EE4;&#x53BB;&#x91CD; <code>erasedups</code>&#x5386;&#x53F2;&#x547D;&#x4EE4;&#x53BB;&#x91CD; <code>export HISTIGNORE=&quot;pwd:ls:ls -ltr&quot;</code>&#x5FFD;&#x7565;&#x4E0D;&#x8BB0;&#x5F55;&#x67D0;&#x4E9B;&#x547D;&#x4EE4;</li>
 <li>``</li>
 </ol>
-<h1 id="u7CFB_u7EDF_u4EFB_u52A1_u7BA1_u7406"><a href="#u7CFB_u7EDF_u4EFB_u52A1_u7BA1_u7406" class="headerlink" title="系统任务管理"></a>系统任务管理</h1><h2 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h2><h2 id="iptables"><a href="#iptables" class="headerlink" title="iptables"></a>iptables</h2><h1 id="u7CFB_u7EDF_u6027_u80FD_u76D1_u63A7"><a href="#u7CFB_u7EDF_u6027_u80FD_u76D1_u63A7" class="headerlink" title="系统性能监控"></a>系统性能监控</h1><ol>
+<h1 id="u7CFB_u7EDF_u4EFB_u52A1_u7BA1_u7406"><a href="#u7CFB_u7EDF_u4EFB_u52A1_u7BA1_u7406" class="headerlink" title="&#x7CFB;&#x7EDF;&#x4EFB;&#x52A1;&#x7BA1;&#x7406;"></a>&#x7CFB;&#x7EDF;&#x4EFB;&#x52A1;&#x7BA1;&#x7406;</h1><h2 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h2><h2 id="iptables"><a href="#iptables" class="headerlink" title="iptables"></a>iptables</h2><h1 id="u7CFB_u7EDF_u6027_u80FD_u76D1_u63A7"><a href="#u7CFB_u7EDF_u6027_u80FD_u76D1_u63A7" class="headerlink" title="&#x7CFB;&#x7EDF;&#x6027;&#x80FD;&#x76D1;&#x63A7;"></a>&#x7CFB;&#x7EDF;&#x6027;&#x80FD;&#x76D1;&#x63A7;</h1><ol>
 <li><code>free -th</code></li>
-<li><code>top</code> 使用<code>f</code> 设置要查看的field以及排序依据 使用<code>c</code>显示进程路径</li>
-<li><code>df -Th</code> 查看磁盘使用情况</li>
-<li><code>du -h --max-depth=1</code> 查看目录文件及磁盘占用</li>
-<li><code>lsof /usr/bin/vim -u root</code> 查看root用户使用vim打开的文件</li>
-<li><code>vmstat 1 10</code> 每一秒显示一次，显示10次 系统内存，SWAP，磁盘IO CPU等使用情况</li>
-<li><code>netstat -ntap</code> 显示所有TCP连接（包括监听，连接状态）及其进程与程序</li>
-<li><code>netstat --route</code> 显示路由信息</li>
-<li><code>sysctl -a</code> 显示所有内核参数</li>
-<li><code>nice -num_value process_name</code> 调整进程优先级，-20最高,20最低</li>
-<li><code>kill</code> <code>pkill</code> 杀进程</li>
-<li><code>ps axuf</code> 显示正在运行的进程，进程树</li>
+<li><code>top</code> &#x4F7F;&#x7528;<code>f</code> &#x8BBE;&#x7F6E;&#x8981;&#x67E5;&#x770B;&#x7684;field&#x4EE5;&#x53CA;&#x6392;&#x5E8F;&#x4F9D;&#x636E; &#x4F7F;&#x7528;<code>c</code>&#x663E;&#x793A;&#x8FDB;&#x7A0B;&#x8DEF;&#x5F84;</li>
+<li><code>df -Th</code> &#x67E5;&#x770B;&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x60C5;&#x51B5;</li>
+<li><code>du -h --max-depth=1</code> &#x67E5;&#x770B;&#x76EE;&#x5F55;&#x6587;&#x4EF6;&#x53CA;&#x78C1;&#x76D8;&#x5360;&#x7528;</li>
+<li><code>lsof /usr/bin/vim -u root</code> &#x67E5;&#x770B;root&#x7528;&#x6237;&#x4F7F;&#x7528;vim&#x6253;&#x5F00;&#x7684;&#x6587;&#x4EF6;</li>
+<li><code>vmstat 1 10</code> &#x6BCF;&#x4E00;&#x79D2;&#x663E;&#x793A;&#x4E00;&#x6B21;&#xFF0C;&#x663E;&#x793A;10&#x6B21; &#x7CFB;&#x7EDF;&#x5185;&#x5B58;&#xFF0C;SWAP&#xFF0C;&#x78C1;&#x76D8;IO CPU&#x7B49;&#x4F7F;&#x7528;&#x60C5;&#x51B5;</li>
+<li><code>netstat -ntap</code> &#x663E;&#x793A;&#x6240;&#x6709;TCP&#x8FDE;&#x63A5;&#xFF08;&#x5305;&#x62EC;&#x76D1;&#x542C;&#xFF0C;&#x8FDE;&#x63A5;&#x72B6;&#x6001;&#xFF09;&#x53CA;&#x5176;&#x8FDB;&#x7A0B;&#x4E0E;&#x7A0B;&#x5E8F;</li>
+<li><code>netstat --route</code> &#x663E;&#x793A;&#x8DEF;&#x7531;&#x4FE1;&#x606F;</li>
+<li><code>sysctl -a</code> &#x663E;&#x793A;&#x6240;&#x6709;&#x5185;&#x6838;&#x53C2;&#x6570;</li>
+<li><code>nice -num_value process_name</code> &#x8C03;&#x6574;&#x8FDB;&#x7A0B;&#x4F18;&#x5148;&#x7EA7;&#xFF0C;-20&#x6700;&#x9AD8;,20&#x6700;&#x4F4E;</li>
+<li><code>kill</code> <code>pkill</code> &#x6740;&#x8FDB;&#x7A0B;</li>
+<li><code>ps axuf</code> &#x663E;&#x793A;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x8FDB;&#x7A0B;&#x6811;</li>
 </ol>
-<h2 id="ss_u547D_u4EE4"><a href="#ss_u547D_u4EE4" class="headerlink" title="ss命令"></a>ss命令</h2><ol>
-<li><code>ss</code>是一个比<code>netstat</code>效率更高的查看socket的命令</li>
-<li><code>ss -lp</code>查看监听状态的、有进程信息的</li>
-<li><code>ss -s</code>汇总信息</li>
-<li><code>ss -t -u -u</code>tcp udp unix套接字</li>
-<li><code>ss src ADDRESS_PATTERN</code> <code>ss dst ADDRESS_PATTERN</code>查看满足表达式的源地址或目标地址套接字</li>
+<h2 id="ss_u547D_u4EE4"><a href="#ss_u547D_u4EE4" class="headerlink" title="ss&#x547D;&#x4EE4;"></a>ss&#x547D;&#x4EE4;</h2><ol>
+<li><code>ss</code>&#x662F;&#x4E00;&#x4E2A;&#x6BD4;<code>netstat</code>&#x6548;&#x7387;&#x66F4;&#x9AD8;&#x7684;&#x67E5;&#x770B;socket&#x7684;&#x547D;&#x4EE4;</li>
+<li><code>ss -lp</code>&#x67E5;&#x770B;&#x76D1;&#x542C;&#x72B6;&#x6001;&#x7684;&#x3001;&#x6709;&#x8FDB;&#x7A0B;&#x4FE1;&#x606F;&#x7684;</li>
+<li><code>ss -s</code>&#x6C47;&#x603B;&#x4FE1;&#x606F;</li>
+<li><code>ss -t -u -u</code>tcp udp unix&#x5957;&#x63A5;&#x5B57;</li>
+<li><code>ss src ADDRESS_PATTERN</code> <code>ss dst ADDRESS_PATTERN</code>&#x67E5;&#x770B;&#x6EE1;&#x8DB3;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x6E90;&#x5730;&#x5740;&#x6216;&#x76EE;&#x6807;&#x5730;&#x5740;&#x5957;&#x63A5;&#x5B57;</li>
 </ol>
-<h1 id="u8F6F_u4EF6_u5B89_u88C5"><a href="#u8F6F_u4EF6_u5B89_u88C5" class="headerlink" title="软件安装"></a>软件安装</h1><ol>
-<li><code>rpm -ivh xxx.rpm</code> 安装</li>
-<li><code>rpm -qa --queryformat &#39;%{name}-%{version}\n&#39;</code>以指定的格式查看所有已安装的包信息</li>
-<li><code>rpm -qip xxx.rpm</code> 查看安装包的具体信息(name version url summary)等信息</li>
-<li><code>rpm -qlp xxx.rpm</code> 罗列包内的文件</li>
-<li><code>rpm -qRp xxx.rpm</code> 查看依赖</li>
-<li><code>apt-get install xxx</code> 安装软件并处理好依赖问题</li>
-<li><code>apt-get purge xxx</code>  彻底卸载，移除配置 <code>apt-get remove xxx</code>  移除二进制文件</li>
-<li><code>apt-cache search ^nginx$</code> 使用正则搜索软件包</li>
-<li><code>dpkg -l</code> 列出安装的包</li>
+<h1 id="u8F6F_u4EF6_u5B89_u88C5"><a href="#u8F6F_u4EF6_u5B89_u88C5" class="headerlink" title="&#x8F6F;&#x4EF6;&#x5B89;&#x88C5;"></a>&#x8F6F;&#x4EF6;&#x5B89;&#x88C5;</h1><ol>
+<li><code>rpm -ivh xxx.rpm</code> &#x5B89;&#x88C5;</li>
+<li><code>rpm -qa --queryformat &apos;%{name}-%{version}\n&apos;</code>&#x4EE5;&#x6307;&#x5B9A;&#x7684;&#x683C;&#x5F0F;&#x67E5;&#x770B;&#x6240;&#x6709;&#x5DF2;&#x5B89;&#x88C5;&#x7684;&#x5305;&#x4FE1;&#x606F;</li>
+<li><code>rpm -qip xxx.rpm</code> &#x67E5;&#x770B;&#x5B89;&#x88C5;&#x5305;&#x7684;&#x5177;&#x4F53;&#x4FE1;&#x606F;(name version url summary)&#x7B49;&#x4FE1;&#x606F;</li>
+<li><code>rpm -qlp xxx.rpm</code> &#x7F57;&#x5217;&#x5305;&#x5185;&#x7684;&#x6587;&#x4EF6;</li>
+<li><code>rpm -qRp xxx.rpm</code> &#x67E5;&#x770B;&#x4F9D;&#x8D56;</li>
+<li><code>apt-get install xxx</code> &#x5B89;&#x88C5;&#x8F6F;&#x4EF6;&#x5E76;&#x5904;&#x7406;&#x597D;&#x4F9D;&#x8D56;&#x95EE;&#x9898;</li>
+<li><code>apt-get purge xxx</code>  &#x5F7B;&#x5E95;&#x5378;&#x8F7D;&#xFF0C;&#x79FB;&#x9664;&#x914D;&#x7F6E; <code>apt-get remove xxx</code>  &#x79FB;&#x9664;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;</li>
+<li><code>apt-cache search ^nginx$</code> &#x4F7F;&#x7528;&#x6B63;&#x5219;&#x641C;&#x7D22;&#x8F6F;&#x4EF6;&#x5305;</li>
+<li><code>dpkg -l</code> &#x5217;&#x51FA;&#x5B89;&#x88C5;&#x7684;&#x5305;</li>
 </ol>
-<h1 id="u989D_u5916_u7684_u6280_u5DE7"><a href="#u989D_u5916_u7684_u6280_u5DE7" class="headerlink" title="额外的技巧"></a>额外的技巧</h1><ol>
-<li><code>tee</code> 用vim打开了一个没有写权限的文件，但是已经编辑了半天了，<code>:w !sudo tee &gt; /dev/null %</code>可以拯救你于水火</li>
-<li>oh-my-zsh中的主题就是设置自定义的函数以及PS1 PROMPT等参数</li>
-<li><code>your_command 2&gt;&gt;/dev/null</code> 将错误提示等输出隐藏，<code>Permission denied</code>信息就看不见了</li>
-<li>expect可以用来代替人去做一些交互任务，自动应答等</li>
+<h1 id="u989D_u5916_u7684_u6280_u5DE7"><a href="#u989D_u5916_u7684_u6280_u5DE7" class="headerlink" title="&#x989D;&#x5916;&#x7684;&#x6280;&#x5DE7;"></a>&#x989D;&#x5916;&#x7684;&#x6280;&#x5DE7;</h1><ol>
+<li><code>tee</code> &#x7528;vim&#x6253;&#x5F00;&#x4E86;&#x4E00;&#x4E2A;&#x6CA1;&#x6709;&#x5199;&#x6743;&#x9650;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x4F46;&#x662F;&#x5DF2;&#x7ECF;&#x7F16;&#x8F91;&#x4E86;&#x534A;&#x5929;&#x4E86;&#xFF0C;<code>:w !sudo tee &gt; /dev/null %</code>&#x53EF;&#x4EE5;&#x62EF;&#x6551;&#x4F60;&#x4E8E;&#x6C34;&#x706B;</li>
+<li>oh-my-zsh&#x4E2D;&#x7684;&#x4E3B;&#x9898;&#x5C31;&#x662F;&#x8BBE;&#x7F6E;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x51FD;&#x6570;&#x4EE5;&#x53CA;PS1 PROMPT&#x7B49;&#x53C2;&#x6570;</li>
+<li><code>your_command 2&gt;&gt;/dev/null</code> &#x5C06;&#x9519;&#x8BEF;&#x63D0;&#x793A;&#x7B49;&#x8F93;&#x51FA;&#x9690;&#x85CF;&#xFF0C;<code>Permission denied</code>&#x4FE1;&#x606F;&#x5C31;&#x770B;&#x4E0D;&#x89C1;&#x4E86;</li>
+<li>expect&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x4EE3;&#x66FF;&#x4EBA;&#x53BB;&#x505A;&#x4E00;&#x4E9B;&#x4EA4;&#x4E92;&#x4EFB;&#x52A1;&#xFF0C;&#x81EA;&#x52A8;&#x5E94;&#x7B54;&#x7B49;</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/sh</span></span><br><span class="line"><span class="comment"># 在同级目录下放置.host文件内容如下</span></span><br><span class="line"><span class="comment"># #跳转标识|服务器IP|登陆用户名|登陆密码</span></span><br><span class="line"><span class="comment"># test|172.30.11.218|work|homelink</span></span><br><span class="line"><span class="comment"># 使用该脚本可以实现通过标识直接登陆</span></span><br><span class="line"></span><br><span class="line">OS_TYPE=`uname <span class="operator">-s</span>`</span><br><span class="line">HOST_FILE=$(<span class="built_in">cd</span> <span class="string">"<span class="variable">$(dirname "$0")</span>"</span>; <span class="built_in">pwd</span>)/.host</span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> == <span class="number">0</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$OS_TYPE</span> = <span class="string">'Linux'</span> ] ; <span class="keyword">then</span></span><br><span class="line">        awk -F <span class="string">'|'</span> <span class="string">'&#123;system("echo -e \"\\e[0;33m["$3"@"$2"]\\e[m\t\t"$1"\"")&#125;'</span> <span class="variable">$HOST_FILE</span></span><br><span class="line">    <span class="keyword">elif</span> [ <span class="variable">$OS_TYPE</span> = <span class="string">'Darwin'</span> ] ; <span class="keyword">then</span>                 </span><br><span class="line">        awk -F <span class="string">'|'</span> <span class="string">'&#123;system("echo \""$3"@"$2"\t\t"$1"\"")&#125;'</span> <span class="variable">$HOST_FILE</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"不支持的操作系统"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> == <span class="number">1</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  <span class="built_in">read</span> _HOST _USER _PASSWD &lt;&lt;&lt; `awk -F <span class="string">'|'</span> <span class="string">'&#123;if($1=="'</span><span class="variable">$1</span><span class="string">'")&#123;print $2,$3,$4&#125;&#125;'</span> <span class="variable">$HOST_FILE</span>`</span><br><span class="line">  <span class="keyword">if</span> [ ! -n <span class="string">"<span class="variable">$_HOST</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"no host for "</span><span class="variable">$1</span></span><br><span class="line">    <span class="built_in">exit</span> <span class="number">1</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$_HOST</span> <span class="variable">$_USER</span> <span class="variable">$_PASSWD</span></span><br><span class="line">  expect -c <span class="string">"spawn ssh <span class="variable">$_USER</span>@<span class="variable">$_HOST</span></span><br><span class="line">  expect &#123;</span><br><span class="line">    yes/no  &#123;send yes\r; exp_continue&#125;</span><br><span class="line">    password:  &#123;send \"<span class="variable">$_PASSWD</span>\r\"&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  interact"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<h1 id="u57FA_u7840_u77E5_u8BC6_u8865_u5145_u8BF4_u660E"><a href="#u57FA_u7840_u77E5_u8BC6_u8865_u5145_u8BF4_u660E" class="headerlink" title="基础知识补充说明"></a>基础知识补充说明</h1><ol>
-<li>文件Access time （文件被访问的时候更新） Modification time（文件内容修改的时候更新） Change time （inode data更新的时候更新）</li>
-<li>当目录里面的文件被访问的时候目录被访问 –Access time</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/sh</span></span><br><span class="line"><span class="comment"># &#x5728;&#x540C;&#x7EA7;&#x76EE;&#x5F55;&#x4E0B;&#x653E;&#x7F6E;.host&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x5982;&#x4E0B;</span></span><br><span class="line"><span class="comment"># #&#x8DF3;&#x8F6C;&#x6807;&#x8BC6;|&#x670D;&#x52A1;&#x5668;IP|&#x767B;&#x9646;&#x7528;&#x6237;&#x540D;|&#x767B;&#x9646;&#x5BC6;&#x7801;</span></span><br><span class="line"><span class="comment"># test|172.30.11.218|work|homelink</span></span><br><span class="line"><span class="comment"># &#x4F7F;&#x7528;&#x8BE5;&#x811A;&#x672C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x901A;&#x8FC7;&#x6807;&#x8BC6;&#x76F4;&#x63A5;&#x767B;&#x9646;</span></span><br><span class="line"></span><br><span class="line">OS_TYPE=`uname <span class="operator">-s</span>`</span><br><span class="line">HOST_FILE=$(<span class="built_in">cd</span> <span class="string">&quot;<span class="variable">$(dirname &quot;$0&quot;)</span>&quot;</span>; <span class="built_in">pwd</span>)/.host</span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> == <span class="number">0</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$OS_TYPE</span> = <span class="string">&apos;Linux&apos;</span> ] ; <span class="keyword">then</span></span><br><span class="line">        awk -F <span class="string">&apos;|&apos;</span> <span class="string">&apos;{system(&quot;echo -e \&quot;\\e[0;33m[&quot;$3&quot;@&quot;$2&quot;]\\e[m\t\t&quot;$1&quot;\&quot;&quot;)}&apos;</span> <span class="variable">$HOST_FILE</span></span><br><span class="line">    <span class="keyword">elif</span> [ <span class="variable">$OS_TYPE</span> = <span class="string">&apos;Darwin&apos;</span> ] ; <span class="keyword">then</span>                 </span><br><span class="line">        awk -F <span class="string">&apos;|&apos;</span> <span class="string">&apos;{system(&quot;echo \&quot;&quot;$3&quot;@&quot;$2&quot;\t\t&quot;$1&quot;\&quot;&quot;)}&apos;</span> <span class="variable">$HOST_FILE</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;&#x4E0D;&#x652F;&#x6301;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> == <span class="number">1</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  <span class="built_in">read</span> _HOST _USER _PASSWD &lt;&lt;&lt; `awk -F <span class="string">&apos;|&apos;</span> <span class="string">&apos;{if($1==&quot;&apos;</span><span class="variable">$1</span><span class="string">&apos;&quot;){print $2,$3,$4}}&apos;</span> <span class="variable">$HOST_FILE</span>`</span><br><span class="line">  <span class="keyword">if</span> [ ! -n <span class="string">&quot;<span class="variable">$_HOST</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;no host for &quot;</span><span class="variable">$1</span></span><br><span class="line">    <span class="built_in">exit</span> <span class="number">1</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$_HOST</span> <span class="variable">$_USER</span> <span class="variable">$_PASSWD</span></span><br><span class="line">  expect -c <span class="string">&quot;spawn ssh <span class="variable">$_USER</span>@<span class="variable">$_HOST</span></span><br><span class="line">  expect {</span><br><span class="line">    yes/no  {send yes\r; exp_continue}</span><br><span class="line">    password:  {send \&quot;<span class="variable">$_PASSWD</span>\r\&quot;};</span><br><span class="line">  }</span><br><span class="line">  interact&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<h1 id="u57FA_u7840_u77E5_u8BC6_u8865_u5145_u8BF4_u660E"><a href="#u57FA_u7840_u77E5_u8BC6_u8865_u5145_u8BF4_u660E" class="headerlink" title="&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#x8865;&#x5145;&#x8BF4;&#x660E;"></a>&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#x8865;&#x5145;&#x8BF4;&#x660E;</h1><ol>
+<li>&#x6587;&#x4EF6;Access time &#xFF08;&#x6587;&#x4EF6;&#x88AB;&#x8BBF;&#x95EE;&#x7684;&#x65F6;&#x5019;&#x66F4;&#x65B0;&#xFF09; Modification time&#xFF08;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x4FEE;&#x6539;&#x7684;&#x65F6;&#x5019;&#x66F4;&#x65B0;&#xFF09; Change time &#xFF08;inode data&#x66F4;&#x65B0;&#x7684;&#x65F6;&#x5019;&#x66F4;&#x65B0;&#xFF09;</li>
+<li>&#x5F53;&#x76EE;&#x5F55;&#x91CC;&#x9762;&#x7684;&#x6587;&#x4EF6;&#x88AB;&#x8BBF;&#x95EE;&#x7684;&#x65F6;&#x5019;&#x76EE;&#x5F55;&#x88AB;&#x8BBF;&#x95EE; &#x2013;Access time</li>
 </ol>
 </span>
       
@@ -469,14 +469,14 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
@@ -557,7 +557,7 @@
       <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>
