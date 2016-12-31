@@ -37,16 +37,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="工作以来的尝试和感想">
+<meta name="description" content="nginx是PHPweb开发技能树中重要的枝节，有很多大神在nginx的基础上开发一些模块，比较出名的就是依托lua打造的高性能web应用器－－openresty.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx配置">
+<meta property="og:title" content="nginx学习">
 <meta property="og:url" content="http://rambone.me/2015/09/28/nginx/index.html">
 <meta property="og:site_name" content="Web开发实践手札">
-<meta property="og:description" content="工作以来的尝试和感想">
-<meta property="og:updated_time" content="2015-11-17T10:18:26.000Z">
+<meta property="og:description" content="nginx是PHPweb开发技能树中重要的枝节，有很多大神在nginx的基础上开发一些模块，比较出名的就是依托lua打造的高性能web应用器－－openresty.">
+<meta property="og:updated_time" content="2016-06-18T10:55:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx配置">
-<meta name="twitter:description" content="工作以来的尝试和感想">
+<meta name="twitter:title" content="nginx学习">
+<meta name="twitter:description" content="nginx是PHPweb开发技能树中重要的枝节，有很多大神在nginx的基础上开发一些模块，比较出名的就是依托lua打造的高性能web应用器－－openresty.">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -56,7 +56,7 @@
   };
 </script>
 
-  <title> nginx配置 | Web开发实践手札 </title>
+  <title> nginx学习 | Web开发实践手札 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -179,7 +179,7 @@
           
           
             
-              nginx配置
+              nginx学习
             
           
         </h1>
@@ -229,7 +229,11 @@
       
 
       
-        <span itemprop="articleBody"></span>
+        <span itemprop="articleBody"><h2 id="u53D8_u91CF_u76F8_u5173"><a href="#u53D8_u91CF_u76F8_u5173" class="headerlink" title="变量相关"></a>变量相关</h2><ol>
+<li>有点类似php的变量使用，作用域大到整个配置，可以跨不同主机的server配置块,但是每个请求都有所有变量的独立副本。</li>
+</ol>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">location</span> /test &#123;</span><br><span class="line">    <span class="title">set</span> <span class="variable">$foo</span> hello;</span><br><span class="line">    <span class="title">echo</span> <span class="string">"foo:<span class="variable">$foo</span> or <span class="variable">$&#123;foo&#125;</span>"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># echo_exec rewrite都可以实现内部跳转，跳转时保留变量副本。</span></span><br></pre></td></tr></table></figure>
+<h6 id="u9664_u4E86_u7528_u6237_u81EA_u5B9A_u4E49_u7684_u53D8_u91CF_u5916_u8FD8_u6709_u5185_u5EFA_u53D8_u91CF_uFF0C_24uri_2C_24request_uri_u7B49"><a href="#u9664_u4E86_u7528_u6237_u81EA_u5B9A_u4E49_u7684_u53D8_u91CF_u5916_u8FD8_u6709_u5185_u5EFA_u53D8_u91CF_uFF0C_24uri_2C_24request_uri_u7B49" class="headerlink" title="除了用户自定义的变量外还有内建变量，$uri,$request_uri等"></a>除了用户自定义的变量外还有内建变量，$uri,$request_uri等</h6><h6 id="u5176_u4E2D_24arg_XXX_u7684_u53D8_u91CF_u662F_u5F53_u524D_u8BF7_u6C42_u540D_u4E3A_XXX__u7684_URI__u53C2_u6570_u7684_u503C_uFF0C_u800C_u4E14_u8FD8_u662F_u672A_u89E3_u7801_u7684_u539F_u59CB_u5F62_u5F0F_u7684_u503C_28_u4F46_u662F_u65E0_u6CD5_u5185_u90E8_u8DF3_u8F6C_u643A_u5E26_29"><a href="#u5176_u4E2D_24arg_XXX_u7684_u53D8_u91CF_u662F_u5F53_u524D_u8BF7_u6C42_u540D_u4E3A_XXX__u7684_URI__u53C2_u6570_u7684_u503C_uFF0C_u800C_u4E14_u8FD8_u662F_u672A_u89E3_u7801_u7684_u539F_u59CB_u5F62_u5F0F_u7684_u503C_28_u4F46_u662F_u65E0_u6CD5_u5185_u90E8_u8DF3_u8F6C_u643A_u5E26_29" class="headerlink" title="其中$arg_XXX的变量是当前请求名为 XXX 的 URI 参数的值，而且还是未解码的原始形式的值(<strong>但是无法内部跳转携带</strong>)"></a>其中$arg_XXX的变量是当前请求名为 XXX 的 URI 参数的值，而且还是未解码的原始形式的值(<strong>但是无法内部跳转携带</strong>)</h6><h6 id="u53E6_u5916_u8FD8_u6709_24cookie_XXX_28_u83B7_u53D6cookie_u503C_u7684_u53D8_u91CF_u7FA4_29_u3001_24sent_http_XXX_28_u83B7_u53D6_u54CD_u5E94_u5934_u7684_u53D8_u91CF_u7FA4_29"><a href="#u53E6_u5916_u8FD8_u6709_24cookie_XXX_28_u83B7_u53D6cookie_u503C_u7684_u53D8_u91CF_u7FA4_29_u3001_24sent_http_XXX_28_u83B7_u53D6_u54CD_u5E94_u5934_u7684_u53D8_u91CF_u7FA4_29" class="headerlink" title="另外还有$cookie_XXX(获取cookie值的变量群)、$sent_http_XXX(获取响应头的变量群)"></a>另外还有$cookie_XXX(获取cookie值的变量群)、$sent_http_XXX(获取响应头的变量群)</h6></span>
       
     </div>
 
@@ -280,7 +284,7 @@
           <div class="comments" id="comments">
             
               <div class="ds-thread" data-thread-key="2015/09/28/nginx/"
-                   data-title="nginx配置" data-url="http://rambone.me/2015/09/28/nginx/">
+                   data-title="nginx学习" data-url="http://rambone.me/2015/09/28/nginx/">
               </div>
             
           </div>
@@ -320,21 +324,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -391,7 +395,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u53D8_u91CF_u76F8_u5173"><span class="nav-number">1.</span> <span class="nav-text">变量相关</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#u9664_u4E86_u7528_u6237_u81EA_u5B9A_u4E49_u7684_u53D8_u91CF_u5916_u8FD8_u6709_u5185_u5EFA_u53D8_u91CF_uFF0C_24uri_2C_24request_uri_u7B49"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">除了用户自定义的变量外还有内建变量，$uri,$request_uri等</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#u5176_u4E2D_24arg_XXX_u7684_u53D8_u91CF_u662F_u5F53_u524D_u8BF7_u6C42_u540D_u4E3A_XXX__u7684_URI__u53C2_u6570_u7684_u503C_uFF0C_u800C_u4E14_u8FD8_u662F_u672A_u89E3_u7801_u7684_u539F_u59CB_u5F62_u5F0F_u7684_u503C_28_u4F46_u662F_u65E0_u6CD5_u5185_u90E8_u8DF3_u8F6C_u643A_u5E26_29"><span class="nav-number">1.0.0.0.2.</span> <span class="nav-text">其中$arg_XXX的变量是当前请求名为 XXX 的 URI 参数的值，而且还是未解码的原始形式的值(但是无法内部跳转携带)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#u53E6_u5916_u8FD8_u6709_24cookie_XXX_28_u83B7_u53D6cookie_u503C_u7684_u53D8_u91CF_u7FA4_29_u3001_24sent_http_XXX_28_u83B7_u53D6_u54CD_u5E94_u5934_u7684_u53D8_u91CF_u7FA4_29"><span class="nav-number">1.0.0.0.3.</span> <span class="nav-text">另外还有$cookie_XXX(获取cookie值的变量群)、$sent_http_XXX(获取响应头的变量群)</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

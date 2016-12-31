@@ -43,7 +43,7 @@
 <meta property="og:url" content="http://rambone.me/2015/10/10/php-generator/index.html">
 <meta property="og:site_name" content="Web开发实践手札">
 <meta property="og:description" content="在学习ES6基础的时候了解到yield的用法,后来在鸟哥的博客中也看到php也有生成器">
-<meta property="og:updated_time" content="2015-11-17T10:18:46.000Z">
+<meta property="og:updated_time" content="2016-09-06T08:36:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php生成器">
 <meta name="twitter:description" content="在学习ES6基础的时候了解到yield的用法,后来在鸟哥的博客中也看到php也有生成器">
@@ -238,7 +238,8 @@
 <p>如同<code>return</code>的用法，<strong>yield</strong>会返回一个值给循环调用此生成器的代码并暂停执行生成器函数.</p>
 <p>另外,一个生成器被第一次调用的时候会返回一个内部Generator类对象,此迭代器只能向前迭代且有个<code>send</code>的特殊方法:<strong><em> 将传入的值作为yield表达式的结果并且恢复发生器的执行</em></strong></p>
 <hr>
-<p>分割线之后浅谈ES6<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">helloWorldGenerator</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">'hello'</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">'world'</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'ending'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> hw = helloWorldGenerator();</span><br></pre></td></tr></table></figure></p>
+<p>分割线之后浅谈ES6</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">helloWorldGenerator</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">'hello'</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">'world'</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'ending'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> hw = helloWorldGenerator();</span><br></pre></td></tr></table></figure>
 <p>上面代码来自阮老师博客,关键点是<code>function</code>后面的<code>*</code>号以及<code>yield</code>。和php中的迭代一样,这里只有调用<code>next</code>方法才会执行内部的代码块,同时返回值是一个对象<code>{value:&#39;xxx&#39;, done: false}</code>value是当前yield语句的值,done表示遍历是否结束</p>
 <p>对比php中的生成器,它还有的特点是:</p>
 <ol>
@@ -271,7 +272,7 @@
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/28/nginx/" rel="next">nginx配置</a>
+              <a href="/2015/09/28/nginx/" rel="next">nginx学习</a>
             
           </div>
         </div>
@@ -337,21 +338,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
