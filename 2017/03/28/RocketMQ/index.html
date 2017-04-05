@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="interview," />
+  <meta name="keywords" content="im," />
 
 
 
@@ -37,16 +37,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="来星图快一年后，感觉有点迷失，便向CTO提了离职，随着新来的PHPer到位,我也开始了寻找下家之旅。">
+<meta name="description" content="即时通讯项目需要使用一款合适的MQ来处理消息，特调研阿里出品、Apache孵化的RocketMQ.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面试所得">
-<meta property="og:url" content="http://rambone.me/2016/03/18/interview/index.html">
+<meta property="og:title" content="RocketMQ">
+<meta property="og:url" content="http://rambone.me/2017/03/28/RocketMQ/index.html">
 <meta property="og:site_name" content="Web开发实践手札">
-<meta property="og:description" content="来星图快一年后，感觉有点迷失，便向CTO提了离职，随着新来的PHPer到位,我也开始了寻找下家之旅。">
-<meta property="og:updated_time" content="2016-09-07T12:42:56.000Z">
+<meta property="og:description" content="即时通讯项目需要使用一款合适的MQ来处理消息，特调研阿里出品、Apache孵化的RocketMQ.">
+<meta property="og:updated_time" content="2017-04-05T09:48:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面试所得">
-<meta name="twitter:description" content="来星图快一年后，感觉有点迷失，便向CTO提了离职，随着新来的PHPer到位,我也开始了寻找下家之旅。">
+<meta name="twitter:title" content="RocketMQ">
+<meta name="twitter:description" content="即时通讯项目需要使用一款合适的MQ来处理消息，特调研阿里出品、Apache孵化的RocketMQ.">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -56,7 +56,7 @@
   };
 </script>
 
-  <title> 面试所得 | Web开发实践手札 </title>
+  <title> RocketMQ | Web开发实践手札 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -179,7 +179,7 @@
           
           
             
-              面试所得
+              RocketMQ
             
           
         </h1>
@@ -188,8 +188,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-03-18T11:40:15+08:00" content="2016-03-18">
-            2016-03-18
+          <time itemprop="dateCreated" datetime="2017-03-28T15:40:21+08:00" content="2017-03-28">
+            2017-03-28
           </time>
         </span>
 
@@ -198,8 +198,8 @@
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/生活/" itemprop="url" rel="index">
-                  <span itemprop="name">生活</span>
+                <a href="/categories/技术/" itemprop="url" rel="index">
+                  <span itemprop="name">技术</span>
                 </a>
               </span>
 
@@ -214,8 +214,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2016/03/18/interview/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/18/interview/" itemprop="commentsCount"></span>
+              <a href="/2017/03/28/RocketMQ/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/28/RocketMQ/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -229,11 +229,70 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="u9762_u8BD5_u5FC3_u5F97"><a href="#u9762_u8BD5_u5FC3_u5F97" class="headerlink" title="&#x9762;&#x8BD5;&#x5FC3;&#x5F97;"></a>&#x9762;&#x8BD5;&#x5FC3;&#x5F97;</h2><ol>
-<li>&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x9664;&#x4E86;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x7684;&#x4F53;&#x73B0;&#x5916;&#xFF0C;&#x8FD8;&#x4F1A;&#x8BBE;&#x8BA1;&#x8FDE;&#x63A5;&#x6C60;&#x5E76;&#x5904;&#x7406;&#x597D;&#x4E3B;&#x4ECE;&#x3001;&#x8BFB;&#x5199;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x53E6;&#x5916;&#x8FD8;&#x5E94;&#x8BE5;&#x6DFB;&#x52A0;&#x91CD;&#x8FDE;&#x673A;&#x5236;&#x3002;</li>
-<li>nginx&#x6027;&#x80FD;&#x5F3A;&#x4E8E;apache&#x7684;&#x539F;&#x56E0;&#x662F;&#xFF0C;&#x91C7;&#x7528;&#x4E86;epoll&#x6216;kqueue&#x7684;&#x7F51;&#x7EDC;I/O&#x6A21;&#x578B;&#xFF0C;&#x800C;apache&#x8FD8;&#x662F;&#x4F20;&#x7EDF;&#x7684;select&#x6A21;&#x578B;&#x3002;</li>
-<li>&#x5BF9;&#x4E8E;session&#x7684;&#x5904;&#x7406;&#xFF0C;&#x6846;&#x67B6;&#x4F1A;&#x4F7F;&#x7528;PHP&#x63D0;&#x4F9B;&#x7684;session handlers&#x4E2D;&#x7684;<code>session_set_save_handler()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x5B9E;&#x73B0;<code>SessionHandlerInterface</code>&#x4E2D;&#x7684;<code>open</code> <code>destory</code> <code>gc</code> <code>read</code> <code>write</code> <code>close</code>&#x7B49;&#x65B9;&#x6CD5;&#x3002;</li>
-<li>&#x5BF9;&#x4E8E;&#x8D85;&#x5927;&#x6587;&#x4EF6;&#xFF0C;&#x67E5;&#x627E;&#x7F3A;&#x5931;&#x6570;&#x5B57;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;<strong>bit&#x4F4D;&#x6570;&#x7EC4;</strong>&#x5904;&#x7406;&#x6B64;&#x7C7B;&#x95EE;&#x9898;&#x3002;</li>
+        <span itemprop="articleBody"><h3 id="u5206_u5E03_u5F0FMQ"><a href="#u5206_u5E03_u5F0FMQ" class="headerlink" title="&#x5206;&#x5E03;&#x5F0F;MQ"></a>&#x5206;&#x5E03;&#x5F0F;MQ</h3><ol>
+<li>Broker &#x6D88;&#x606F;&#x4E2D;&#x8F6C;&#x8005;&#xFF0C;&#x8D1F;&#x8D23;&#x5B58;&#x50A8;&#x6D88;&#x606F;&#xFF0C;&#x8F6C;&#x53D1;&#x6D88;&#x606F;</li>
+<li>Producer &#x751F;&#x4EA7;&#x8005;</li>
+<li>Consumer &#x6D88;&#x8D39;&#x8005;</li>
+<li>Nameserver &#x5206;&#x5E03;&#x5F0F;&#x4E2D;&#x5FC3;&#xFF0C;&#x7EF4;&#x62A4;Broker&#x3001;&#x72B6;&#x6001;&#x4FDD;&#x6301;</li>
+<li>Topic &#x6D88;&#x606F;&#x4E3B;&#x9898;</li>
+<li>Group &#x6D88;&#x8D39;&#x7EC4;</li>
+</ol>
+<h3 id="u4E00_u4E9B_u7279_u6027_26amp_3B_u95EE_u9898"><a href="#u4E00_u4E9B_u7279_u6027_26amp_3B_u95EE_u9898" class="headerlink" title="&#x4E00;&#x4E9B;&#x7279;&#x6027;&amp;&#x95EE;&#x9898;"></a>&#x4E00;&#x4E9B;&#x7279;&#x6027;&amp;&#x95EE;&#x9898;</h3><ol>
+<li>&#x5B58;&#x5728;&#x4E14;&#x4E0D;&#x89E3;&#x51B3;&#x6D88;&#x606F;&#x91CD;&#x590D;&#x95EE;&#x9898;&#x3002;</li>
+<li>RocketMQ&#x901A;&#x8FC7;&#x8F6E;&#x8BE2;&#x6240;&#x6709;&#x961F;&#x5217;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x786E;&#x5B9A;&#x6D88;&#x606F;&#x88AB;&#x53D1;&#x9001;&#x5230;&#x54EA;&#x4E00;&#x4E2A;&#x961F;&#x5217;&#xFF08;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B56;&#x7565;&#xFF09;<br>Producer&#x53D1;&#x9001;&#x6D88;&#x606F;&#x5931;&#x8D25;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x91CD;&#x8BD5;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x6700;&#x5927;&#x91CD;&#x8BD5;&#x6B21;&#x6570;&#x548C;&#x6700;&#x957F;&#x91CD;&#x8BD5;&#x65F6;&#x95F4;&#x3002;</li>
+</ol>
+<h3 id="u6301_u4E45_u5316_u6D88_u606F"><a href="#u6301_u4E45_u5316_u6D88_u606F" class="headerlink" title="&#x6301;&#x4E45;&#x5316;&#x6D88;&#x606F;"></a>&#x6301;&#x4E45;&#x5316;&#x6D88;&#x606F;</h3><ol>
+<li>consume queue&#x662F;&#x6D88;&#x606F;&#x7684;&#x903B;&#x8F91;&#x961F;&#x5217;&#xFF0C;&#x6307;&#x5B9A;&#x6D88;&#x606F;&#x5728;commit log&#x4E0A;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</li>
+<li>&#x6309;&#x7167;&#x6D88;&#x8D39;&#x7AEF;GroupName&#x6765;&#x5206;&#x7EC4;&#x91CD;&#x8BD5;&#x961F;&#x5217;&#xFF0C;&#x6D88;&#x8D39;&#x5931;&#x8D25;&#xFF0C;&#x53D1;&#x5F80;&#x91CD;&#x8BD5;&#x961F;&#x5217;&#x3002;</li>
+<li>&#x6309;&#x7167;&#x6D88;&#x8D39;&#x7AEF;GroupName&#x6765;&#x5206;&#x7EC4;&#x6B7B;&#x4FE1;&#x961F;&#x5217;&#xFF0C;&#x65E0;&#x6CD5;&#x6295;&#x9012;&#xFF0C;&#x53D1;&#x5F80;&#x6B7B;&#x4FE1;&#x961F;&#x5217;&#x3002;</li>
+<li>Consume Queue&#x7684;&#x5B58;&#x50A8;&#x5355;&#x5143;&#xFF1A;CommitLog Offset&#xFF0C;Size&#xFF0C;Message Tag Hashcode&#x3002;</li>
+<li>CommitLog&#x7684;&#x6D88;&#x606F;&#x5B58;&#x50A8;&#x5355;&#x5143;&#x957F;&#x5EA6;&#x4E0D;&#x56FA;&#x5B9A;&#xFF0C;&#x6587;&#x4EF6;&#x987A;&#x5E8F;&#x5199;&#xFF0C;&#x968F;&#x673A;&#x8BFB;&#x3002;&#x5355;broker&#x4E0A;&#x88AB;&#x6240;&#x6709;queue&#x5171;&#x4EAB;&#x3002;</li>
+</ol>
+<h3 id="u6D88_u606F_u67E5_u8BE2"><a href="#u6D88_u606F_u67E5_u8BE2" class="headerlink" title="&#x6D88;&#x606F;&#x67E5;&#x8BE2;"></a>&#x6D88;&#x606F;&#x67E5;&#x8BE2;</h3><ol>
+<li>&#x6839;&#x636E;MessageId&#x67E5;&#x8BE2;&#xFF0C;&#x89E3;&#x6790;Broker&#x5730;&#x5740;&#x548C;Commit Log&#x504F;&#x79FB;&#x5730;&#x5740;&#x3002;</li>
+<li>&#x6839;&#x636E;MessageKey&#xFF0C;&#x6839;&#x636E;key&#x7684;hashcode&#x5BF9;slotNum&#x53D6;&#x6A21;&#x5F97;&#x5230;&#x69FD;&#x4F4D;&#x7F6E;&#xFF0C;&#x6839;&#x636E;slotValue&#x67E5;&#x627E;&#x7D22;&#x5F15;&#x9879;&#x5217;&#x8868;&#x6700;&#x540E;&#x4E00;&#x9879;&#xFF0C;&#x904D;&#x5386;&#x7D22;&#x5F15;&#x9879;&#x5217;&#x8868;&#x8FD4;&#x56DE;&#x67E5;&#x8BE2;&#x65F6;&#x95F4;&#x8303;&#x56F4;&#x5185;&#x7684;&#x7ED3;&#x679C;&#x96C6;&#x3002;</li>
+<li>&#x6B63;&#x5E38;&#x6D88;&#x606F;&#x6D88;&#x8D39;&#x6D41;&#x7A0B;&#xFF1A;&#x751F;&#x4EA7;&#x8005;&#x53D1;&#x9001;&#x6D88;&#x606F;,&#x6D88;&#x606F;&#x4ECE;socket&#x8FDB;&#x5165;java heap&#xFF0C;&#x8FDB;&#x5165;pagecache&#xFF08;&#x7269;&#x7406;&#x5185;&#x5B58;&#xFF09;&#xFF0C;&#x540C;&#x65F6;&#x5F02;&#x6B65;&#x7EBF;&#x7A0B;flush disk&#xFF0C;&#x6D88;&#x8D39;&#x8005;&#x62C9;&#x6D88;&#x606F;&#xFF0C;&#x6D88;&#x606F;&#x76F4;&#x63A5;&#x4ECE;pagecache&#x8F6C;&#x5165;socket&#xFF0C;&#x4E0D;&#x8FC7;java heap&#x3002; &#x5F02;&#x5E38;&#x6D88;&#x8D39;&#x60C5;&#x51B5;&#xFF1A;socket&#x8BBF;&#x95EE;&#x4E86;&#x865A;&#x62DF;&#x5185;&#x5B58;&#xFF0C;&#x4EA7;&#x751F;&#x7F3A;&#x9875;&#x4E2D;&#x65AD;&#xFF0C;&#x5F15;&#x53D1;&#x78C1;&#x76D8;IO&#xFF0C;&#x4ECE;disk load&#x5230;pagecache&#x518D;&#x5230;socket&#x3002;</li>
+</ol>
+<h3 id="u6D88_u606F_u8BA2_u9605"><a href="#u6D88_u606F_u8BA2_u9605" class="headerlink" title="&#x6D88;&#x606F;&#x8BA2;&#x9605;"></a>&#x6D88;&#x606F;&#x8BA2;&#x9605;</h3><ol>
+<li>&#x6D88;&#x8D39;&#x7AEF;&#x4E3B;&#x52A8;&#x62C9;&#x53D6;</li>
+<li>&#x6D88;&#x8D39;&#x7AEF;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#xFF1A;&#x5E73;&#x5747;&#x5206;&#x914D;&#x3001;&#x6D88;&#x8D39;&#x7AEF;&#x914D;&#x7F6E;</li>
+<li>&#x6D88;&#x8D39;&#x7AEF;Push&#x6A21;&#x5F0F;&#x901A;&#x8FC7;&#x957F;&#x8F6E;&#x8BE2;&#x7684;&#x6A21;&#x5F0F;&#x5B9E;&#x73B0;&#x3002;broker&#x6536;&#x5230;pull&#x65F6;&#xFF0C;&#x961F;&#x5217;&#x65E0;&#x6570;&#x636E;&#xFF0C;broker&#x963B;&#x585E;&#x8BF7;&#x6C42;&#x76F4;&#x5230;&#x6709;&#x6570;&#x636E;&#x4F20;&#x9012;&#x6216;&#x8D85;&#x65F6;&#x3002;</li>
+</ol>
+<h3 id="u5176_u4ED6_u7279_u6027"><a href="#u5176_u4ED6_u7279_u6027" class="headerlink" title="&#x5176;&#x4ED6;&#x7279;&#x6027;"></a>&#x5176;&#x4ED6;&#x7279;&#x6027;</h3><ol>
+<li>&#x5B9A;&#x65F6;&#x6D88;&#x606F;</li>
+<li>&#x6D88;&#x606F;&#x7684;&#x5237;&#x76D8;&#x7B56;&#x7565;</li>
+<li>&#x4E3B;&#x52A8;&#x540C;&#x6B65;&#x7B56;&#x7565;&#xFF1A;&#x540C;&#x6B65;&#x53CC;&#x5199;&#x3001;&#x5F02;&#x6B65;&#x590D;&#x5236;</li>
+<li>&#x6D77;&#x91CF;&#x6D88;&#x606F;&#x5806;&#x79EF;&#x80FD;&#x529B;</li>
+<li>&#x9AD8;&#x6548;&#x901A;&#x4FE1;</li>
+</ol>
+<h3 id="u6700_u4F73_u5B9E_u8DF5"><a href="#u6700_u4F73_u5B9E_u8DF5" class="headerlink" title="&#x6700;&#x4F73;&#x5B9E;&#x8DF5;"></a>&#x6700;&#x4F73;&#x5B9E;&#x8DF5;</h3><ol>
+<li>&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;Topic&#xFF0C;&#x6D88;&#x606F;&#x5B50;&#x7C7B;&#x578B;&#x4F7F;&#x7528;tags&#x6807;&#x8BC6;&#xFF0C;&#x65B9;&#x4FBF;&#x6D88;&#x8D39;&#x8005;&#x8FC7;&#x6EE4;</li>
+<li>&#x6D88;&#x606F;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x8BBE;&#x7F6E;&#x5230;keys&#x5B57;&#x6BB5;</li>
+<li>&#x6D88;&#x606F;&#x65E5;&#x5FD7;&#xFF0C;&#x8981;&#x6253;&#x5370;sendresult&#x548C;key&#x5B57;&#x6BB5;</li>
+<li>&#x82E5;&#x60F3;&#x4E0D;&#x4E22;&#x5931;&#x6D88;&#x606F;&#xFF0C;&#x8981;&#x6709;&#x6D88;&#x606F;&#x91CD;&#x53D1;&#x673A;&#x5236;</li>
+<li>&#x6D88;&#x8D39;&#x7AEF;&#x5904;&#x7406;&#x6D88;&#x606F;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x4FDD;&#x6301;&#x5E42;&#x7B49;&#x6027;</li>
+<li>&#x5C3D;&#x91CF;&#x4F7F;&#x7528;&#x6279;&#x91CF;&#x65B9;&#x5F0F;&#x6D88;&#x8D39;&#xFF0C;&#x63D0;&#x9AD8;&#x6D88;&#x8D39;&#x541E;&#x5410;</li>
+<li>&#x4FDD;&#x8BC1;&#x6BCF;&#x6761;&#x6D88;&#x606F;&#x90FD;&#x6709;&#x552F;&#x4E00;&#x7F16;&#x53F7;&#x4E14;&#x4FDD;&#x8BC1;&#x6D88;&#x606F;&#x5904;&#x7406;&#x6210;&#x529F;&#x4E0E;&#x53BB;&#x91CD;&#x8868;&#x7684;&#x65E5;&#x5FD7;&#x540C;&#x65F6;&#x51FA;&#x73B0;</li>
+<li>&#x4F18;&#x5316;&#x6D88;&#x606F;&#x6D88;&#x8D39;&#x8FC7;&#x7A0B;</li>
+<li>&#x7EBF;&#x4E0A;&#x5173;&#x95ED;autoCreateTopicEnable</li>
+</ol>
+<h3 id="u8BBE_u8BA1_u76F8_u5173"><a href="#u8BBE_u8BA1_u76F8_u5173" class="headerlink" title="&#x8BBE;&#x8BA1;&#x76F8;&#x5173;"></a>&#x8BBE;&#x8BA1;&#x76F8;&#x5173;</h3><h4 id="u8BBE_u8BA1_u5047_u5B9A"><a href="#u8BBE_u8BA1_u5047_u5B9A" class="headerlink" title="&#x8BBE;&#x8BA1;&#x5047;&#x5B9A;"></a>&#x8BBE;&#x8BA1;&#x5047;&#x5B9A;</h4><ol>
+<li>&#x6BCF;&#x53F0;PC&#x673A;&#x5668;&#x90FD;&#x53EF;&#x80FD;&#x5B95;&#x673A;&#x4E0D;&#x53EF;&#x670D;&#x52A1;</li>
+<li>&#x4EFB;&#x610F;&#x96C6;&#x7FA4;&#x90FD;&#x53EF;&#x80FD;&#x5904;&#x7406;&#x80FD;&#x529B;&#x4E0D;&#x8DB3;</li>
+<li>&#x6700;&#x574F;&#x7684;&#x60C5;&#x51B5;&#x4E00;&#x5B9A;&#x4F1A;&#x53D1;&#x751F;</li>
+<li>&#x5185;&#x7F51;&#x73AF;&#x5883;&#x9700;&#x8981;&#x4F4E;&#x5EF6;&#x8FDF;&#x6765;&#x63D0;&#x4F9B;&#x6700;&#x4F73;&#x7528;&#x6237;&#x4F53;&#x9A8C;</li>
+</ol>
+<h4 id="u5173_u952E_u8BBE_u8BA1"><a href="#u5173_u952E_u8BBE_u8BA1" class="headerlink" title="&#x5173;&#x952E;&#x8BBE;&#x8BA1;"></a>&#x5173;&#x952E;&#x8BBE;&#x8BA1;</h4><ol>
+<li>&#x5206;&#x5E03;&#x5F0F;&#x96C6;&#x7FA4;&#x5316;</li>
+<li>&#x5F3A;&#x6570;&#x636E;&#x5B89;&#x5168;</li>
+<li>&#x6D77;&#x91CF;&#x6570;&#x636E;&#x5806;&#x79EF;</li>
+<li>&#x6BEB;&#x79D2;&#x7EA7;&#x6295;&#x9012;&#x5EF6;&#x8FDF;&#xFF08;&#x63A8;&#x62C9;&#x6A21;&#x5F0F;&#xFF09;</li>
+</ol>
+<p>CAP&#x5206;&#x522B;&#x4EE3;&#x8868;&#x4E00;&#x81F4;&#x6027;&#xFF08;Consistency&#xFF09;&#xFF0C;&#x53EF;&#x7528;&#x6027;&#xFF08;Availability&#xFF09;&#xFF0C;&#x5206;&#x533A;&#x5BB9;&#x5FCD;&#x6027;&#xFF08;Partition tolerance&#xFF09;</p>
+<h3 id="u73B0_u5B58_u95EE_u9898"><a href="#u73B0_u5B58_u95EE_u9898" class="headerlink" title="&#x73B0;&#x5B58;&#x95EE;&#x9898;"></a>&#x73B0;&#x5B58;&#x95EE;&#x9898;</h3><ol>
+<li>&#x5404;&#x8BED;&#x8A00;sdk&#x652F;&#x6301;&#x4E0D;&#x8DB3;&#xFF0C;&#x76EE;&#x524D;&#x53EA;&#x6709;Java&#x3001;C++&#x3001;.NET</li>
+<li>&#x652F;&#x6301;TCP&#x3001;JMS&#x534F;&#x8BAE;&#xFF0C;&#x4F46;&#x6587;&#x6863;&#x4E0D;&#x8DB3;</li>
+<li>&#x8FD1;&#x671F;&#x6709;&#x5F15;&#x64CE;&#x5C42;&#x9762;&#x7684;&#x5927;&#x7248;&#x672C;&#x53D8;&#x66F4;&#xFF0C;&#x4F7F;&#x7528;&#x8001;&#x7248;&#x672C;&#x4F1A;&#x6709;&#x98CE;&#x9669;</li>
 </ol>
 </span>
       
@@ -243,7 +302,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/interview/" rel="tag">#interview</a>
+            <a href="/tags/im/" rel="tag">#im</a>
           
         </div>
       
@@ -252,13 +311,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/24/newjob/" rel="prev">新工作初体验</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/14/systemd/" rel="next">systemd</a>
+              <a href="/2017/01/26/go-command/" rel="next">go内置命令</a>
             
           </div>
         </div>
@@ -283,8 +340,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/03/18/interview/"
-                   data-title="面试所得" data-url="http://rambone.me/2016/03/18/interview/">
+              <div class="ds-thread" data-thread-key="2017/03/28/RocketMQ/"
+                   data-title="RocketMQ" data-url="http://rambone.me/2017/03/28/RocketMQ/">
               </div>
             
           </div>
@@ -395,7 +452,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u9762_u8BD5_u5FC3_u5F97"><span class="nav-number">1.</span> <span class="nav-text">面试心得</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5206_u5E03_u5F0FMQ"><span class="nav-number">1.</span> <span class="nav-text">分布式MQ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E00_u4E9B_u7279_u6027_26amp_3B_u95EE_u9898"><span class="nav-number">2.</span> <span class="nav-text">一些特性&问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u6301_u4E45_u5316_u6D88_u606F"><span class="nav-number">3.</span> <span class="nav-text">持久化消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u6D88_u606F_u67E5_u8BE2"><span class="nav-number">4.</span> <span class="nav-text">消息查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u6D88_u606F_u8BA2_u9605"><span class="nav-number">5.</span> <span class="nav-text">消息订阅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5176_u4ED6_u7279_u6027"><span class="nav-number">6.</span> <span class="nav-text">其他特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u6700_u4F73_u5B9E_u8DF5"><span class="nav-number">7.</span> <span class="nav-text">最佳实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u8BBE_u8BA1_u76F8_u5173"><span class="nav-number">8.</span> <span class="nav-text">设计相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u8BBE_u8BA1_u5047_u5B9A"><span class="nav-number">8.1.</span> <span class="nav-text">设计假定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5173_u952E_u8BBE_u8BA1"><span class="nav-number">8.2.</span> <span class="nav-text">关键设计</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u73B0_u5B58_u95EE_u9898"><span class="nav-number">9.</span> <span class="nav-text">现存问题</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
